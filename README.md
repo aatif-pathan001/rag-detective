@@ -1,13 +1,3 @@
----
-title: RAG Detective
-emoji: 🔍
-colorFrom: purple
-colorTo: indigo
-sdk: gradio
-app_port: 7860
-pinned: false
----
-
 # RAG Detective
 
 Interactive Hybrid RAG pipeline visualizer and investigation engine powered by **FastAPI**, **BAAI/bge-small-en-v1.5**, **ChromaDB**, **BM25**, **Weighted Reciprocal Rank Fusion (RRF)**, and **Google Gemini**.
