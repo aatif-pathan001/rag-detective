@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/nocturne-0353f0ee-8691-4a95-bb85-83fa19c8426e/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <script src="_ds/nocturne-0353f0ee-8691-4a95-bb85-83fa19c8426e/_ds_bundle.js"></script>
+  <style>
+    :root{--color-bg:#1f1f3c;--color-surface:#1b1a30;--color-text:#f2f1fa;--color-accent:#8b5cf6;--color-accent-2:#a78bfa;--color-divider:#2a2a4a;
+      --color-neutral-100:#f2f1fa;--color-neutral-200:#d6d4e8;--color-neutral-300:#c9c7de;--color-neutral-400:#b8b6d0;--color-neutral-500:#8f8daa;--color-neutral-600:#7d7b98;--color-neutral-700:#4c4a6e;--color-neutral-800:#2c2b48;--color-neutral-900:#24233e;
+      --color-accent-100:#ede9fe;--color-accent-200:#ddd6fe;--color-accent-300:#c4b5fd;--color-accent-400:#a78bfa;--color-accent-500:#8b5cf6;--color-accent-600:#7c3aed;--color-accent-700:#5b4aa8;--color-accent-800:#3b3170;--color-accent-900:#2a2550;
+      --color-section:#2f2860;--color-section-glow:#3d2f8a;--color-section-ghost:#5b4aa8;
+      --font-heading:Outfit, system-ui, sans-serif;--font-heading-weight:600;--font-body:Outfit, system-ui, sans-serif}
+    body{margin:0;background:var(--color-bg);font-family:Outfit, system-ui, sans-serif;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:Outfit, system-ui, sans-serif;font-weight:600;color:#fff;letter-spacing:-0.035em}
+    a{color:#a78bfa;text-decoration:none} a:hover{color:#c4b5fd}
+    *:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+    input::placeholder{color:#7d7b98}
+    .btn{font-family:'JetBrains Mono', monospace;font-size:12px;border-radius:6px;transition:filter .2s, translate .2s, border-color .2s, color .2s}
+    .btn-primary{background:linear-gradient(90deg, #7c2df0, #5b4ff0);border-color:transparent;color:#fff}
+    .btn-primary:hover{filter:brightness(1.15);translate:0 -2px;background:linear-gradient(90deg, #7c2df0, #5b4ff0);color:#fff}
+    .btn-secondary{background:transparent;border:1px solid #2c2b48;color:#c9c7de}
+    .btn-secondary:hover{border-color:#a78bfa;color:#fff;translate:0 -2px;background:transparent}
+    .tag{font-family:'JetBrains Mono', monospace;border-radius:4px}
+    .tag-accent{background:#2a2550;color:#a78bfa;box-shadow:inset 0 0 0 1px #34305a}
+    .tag-neutral{background:#24233e;color:#c9c7de}
+    .input{background:#19182d;border-color:#2c2b48;border-radius:5px;font-family:'JetBrains Mono', monospace;font-size:12px}
+    @keyframes rdScan{0%{top:0%}100%{top:calc(100% - 3px)}}
+    @keyframes rdPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+    @keyframes rdFlow{0%{background-position:-40px 0}100%{background-position:40px 0}}
+    @keyframes rdBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+    @keyframes rdSweep{0%{top:8%;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:92%;opacity:0}}
+  </style>
+</helmet>
+<div style="min-height:100vh;color:var(--color-text);font-family:var(--font-body);background-color:var(--color-bg);background-image:radial-gradient(ellipse 55% 40% at 90% 0%, rgba(124,58,237,.28), transparent 70%), radial-gradient(ellipse 45% 45% at 0% 35%, rgba(91,79,240,.16), transparent 70%), linear-gradient(rgba(167,139,250,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.05) 1px, transparent 1px);background-size:100% 100%, 100% 100%, 32px 32px, 32px 32px;background-attachment:fixed">
+
+  <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb, #1f1f3c 92%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+    <div style="max-width:1320px;margin:0 auto;padding:0 32px;height:58px;display:flex;align-items:center;gap:14px;box-sizing:border-box">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:28px;height:28px;border-radius:5px;display:flex;align-items:center;justify-content:center;background:#7c3aed">
+          <svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"><circle cx="112" cy="112" r="68"></circle><line x1="162" y1="162" x2="222" y2="222"></line></svg>
+        </div>
+        <span style="font-size:15px;font-weight:600;letter-spacing:-0.02em;color:#fff">RAG Detective</span>
+      </div>
+      <span style="color:var(--color-neutral-700)">/</span>
+      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;color:var(--color-neutral-300);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">{{ caseLabel }}</span>
+      <span class="{{ statusClass }}" style="white-space:nowrap">{{ statusLabel }}</span>
+      <div style="margin-left:auto;display:flex;gap:8px">
+        <button class="btn btn-secondary" onClick="{{ onSample }}">Try sample</button>
+        <button class="btn btn-primary" onClick="{{ onNew }}">New case</button>
+      </div>
+    </div>
+    <div style="max-width:1320px;margin:0 auto;padding:0 32px 12px;box-sizing:border-box;overflow-x:auto">
+      <div style="display:flex;align-items:center;min-width:1180px">
+        <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="7">
+          <button onClick="{{ n.onClick }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;padding:7px 12px 7px 8px;border-radius:999px;background:{{ n.bg }};box-shadow:{{ n.ring }};transition:box-shadow .3s, background .3s;flex:none" style-hover="background:color-mix(in srgb, var(--color-accent-900) 70%, var(--color-bg))">
+            <span style="width:24px;height:24px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:{{ n.numColor }};box-shadow:0 0 0 1px {{ n.numRing }}">{{ n.icon }}</span>
+            <span style="display:flex;flex-direction:column;line-height:1.15"><span style="font-size:12.5px;color:{{ n.nameColor }}">{{ n.name }}</span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:{{ n.countColor }}">{{ n.count }}</span></span>
+          </button>
+          <sc-if value="{{ n.link }}" hint-placeholder-val="{{ true }}"><div style="position:relative;flex:1;min-width:14px;height:2px;margin:0 4px;border-radius:1px;background:{{ n.linkBg }};overflow:hidden">{{ n.flow }}</div></sc-if>
+        </sc-for>
+      </div>
+    </div>
+    <div style="height:2px;background:linear-gradient(90deg, #7c2df0, #a78bfa, #5b4ff0);box-shadow:0 0 12px #8b5cf6;opacity:.85"></div>
+  </header>
+
+  <main style="max-width:1320px;margin:0 auto;padding:0 32px 45vh;box-sizing:border-box">
+
+    <section ref="{{ refs.upload }}" style="position:relative;padding:72px 0 8px">
+      <sc-if value="{{ noFile }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:56px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:0.08em;color:var(--color-accent-300)">CASE INTAKE · ingest_file()</span>
+            <h1 style="margin:0;font-size:56px;line-height:1.05;letter-spacing:-0.04em;text-wrap:balance;color:#fff">Every document leaves a <span style="background:linear-gradient(90deg, #c4b5fd, #8b5cf6 60%, #5b4ff0);-webkit-background-clip:text;background-clip:text;color:transparent">trail.</span></h1>
+            <p style="margin:0;font-size:18px;line-height:1.65;font-weight:300;color:#b8b6d0;max-width:540px;text-wrap:pretty">Drop a file and follow it through extraction, chunking, embedding and indexing. Every number on this page is computed from your document by the Python RAG Detective backend.</p>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span class="tag tag-neutral" style="font-family:'JetBrains Mono',ui-monospace,monospace">FastAPI · Python</span>
+              <span class="tag tag-neutral" style="font-family:'JetBrains Mono',ui-monospace,monospace">BGE-small · 384-d</span>
+              <span class="tag tag-neutral" style="font-family:'JetBrains Mono',ui-monospace,monospace">ChromaDB · PCA</span>
+              <span class="tag tag-neutral" style="font-family:'JetBrains Mono',ui-monospace,monospace">BM25</span>
+              <span class="tag tag-neutral" style="font-family:'JetBrains Mono',ui-monospace,monospace">Gemini · RRF</span>
+            </div>
+          </div>
+          <div onClick="{{ onBrowse }}" onDragOver="{{ onDragOver }}" onDragLeave="{{ onDragLeave }}" onDrop="{{ onDrop }}" style="position:relative;cursor:pointer;height:380px;border-radius:var(--radius-lg);background:{{ dropBg }};box-shadow:0 0 0 1px {{ dropBorder }}, 0 40px 80px -40px rgba(0,0,0,0.8);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center;overflow:hidden;transition:background .25s, box-shadow .25s">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 45%, color-mix(in srgb, var(--color-section-glow) 55%, transparent), transparent 70%)"></div>
+            <div style="position:absolute;left:18px;top:18px;width:28px;height:28px;border-left:2px solid var(--color-accent);border-top:2px solid var(--color-accent);border-top-left-radius:6px"></div>
+            <div style="position:absolute;right:18px;top:18px;width:28px;height:28px;border-right:2px solid var(--color-accent);border-top:2px solid var(--color-accent);border-top-right-radius:6px"></div>
+            <div style="position:absolute;left:18px;bottom:18px;width:28px;height:28px;border-left:2px solid var(--color-accent);border-bottom:2px solid var(--color-accent);border-bottom-left-radius:6px"></div>
+            <div style="position:absolute;right:18px;bottom:18px;width:28px;height:28px;border-right:2px solid var(--color-accent);border-bottom:2px solid var(--color-accent);border-bottom-right-radius:6px"></div>
+            {{ heroScan }}
+            <div style="position:relative;width:76px;height:76px;border-radius:38px;display:flex;align-items:center;justify-content:center;background:var(--color-accent-900);box-shadow:0 0 0 1px var(--color-accent-600), 0 0 40px -6px var(--color-accent)">
+              <svg width="34" height="34" viewBox="0 0 256 256" fill="none" stroke="var(--color-accent-200)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M128 152V40M84 84l44-44 44 44M216 152v56a8 8 0 0 1-8 8H48a8 8 0 0 1-8-8v-56"></path></svg>
+            </div>
+            <div style="position:relative;font-size:22px;color:var(--color-neutral-100);letter-spacing:-0.01em">{{ dropTitle }}</div>
+            <div style="position:relative;font-size:13px;color:var(--color-neutral-400)">PDF · DOCX · Markdown · TXT · max 10 MB — streamed from Python backend</div>
+            <div style="position:relative;display:flex;gap:8px;margin-top:6px"><span class="btn btn-primary">Browse files</span></div>
+          </div>
+        </div>
+      </sc-if>
+      <input ref="{{ inputRef }}" type="file" accept=".pdf,.docx,.md,.markdown,.txt" onChange="{{ onPick }}" style="display:none">
+      <sc-if value="{{ hasFile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;align-items:end">
+          <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+            <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;letter-spacing:0.08em;color:var(--color-accent-300)">CASE FILE · {{ file.docId }}</span>
+            <h1 style="margin:0;font-size:46px;line-height:1.08;letter-spacing:-0.03em;overflow-wrap:anywhere">{{ caseTitle }}</h1>
+            <div style="display:flex;gap:28px;flex-wrap:wrap">
+              <sc-for list="{{ caseFacts }}" as="f" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:24px;font-weight:500;letter-spacing:-0.01em">{{ f.v }}</span><span style="font-size:12px;color:var(--color-neutral-400)">{{ f.k }}</span></div></sc-for>
+            </div>
+          </div>
+          <div style="position:relative;border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);padding:18px 20px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+            <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:70px;background:radial-gradient(circle, color-mix(in srgb, var(--color-accent) 30%, transparent), transparent 70%)"></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Evidence tag</span><span style="margin-left:auto" class="tag tag-outline">{{ fileExt }}</span></div>
+            <div style="display:flex;align-items:stretch;gap:1.5px;height:40px">
+              <sc-for list="{{ shaBars }}" as="b" hint-placeholder-count="0"><span style="width:{{ b.w }};background:var(--color-neutral-200);opacity:{{ b.o }};border-radius:1px"></span></sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px">
+              <sc-for list="{{ fileMeta }}" as="m" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:4px 0"><span style="color:var(--color-neutral-500)">{{ m.k }}</span><span style="color:var(--color-neutral-100);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ m.v }}</span></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px"><span style="color:var(--color-neutral-300)">{{ uploadLabel }}</span><span style="margin-left:auto;color:var(--color-neutral-500)">{{ uploadPctLabel }}</span></div>
+              <div style="height:3px;border-radius:2px;background:var(--color-neutral-800);overflow:hidden"><div style="height:100%;width:{{ uploadPctW }};background:var(--color-accent);box-shadow:0 0 10px var(--color-accent)"></div></div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+      <section ref="{{ refs.extract }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.extract.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ S.extract.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.extract.numColor }};background:var(--color-bg);box-shadow:{{ S.extract.node }};transition:box-shadow .4s">02</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.extract.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Extract</h2>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.extract.metaRing }}">{{ S.extract.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ S.extract.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Waiting for a document.</div></sc-if>
+            <sc-if value="{{ S.extract.has }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start">
+                <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                  <div style="display:flex;align-items:center;gap:8px;height:28px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-neutral-400)">
+                    <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Raw evidence</span>
+                    <sc-if value="{{ isPdf }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-left:auto;display:flex;align-items:center;gap:2px"><button class="btn btn-ghost" onClick="{{ prevPage }}" style="padding:2px 8px">‹</button><span>{{ pageLabel }}</span><button class="btn btn-ghost" onClick="{{ nextPage }}" style="padding:2px 8px">›</button></div>
+                    </sc-if>
+                  </div>
+                  <div style="position:relative;height:540px;overflow:auto;border-radius:var(--radius-md);background:var(--color-neutral-100);box-shadow:0 30px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px var(--color-neutral-700)">
+                    <sc-if value="{{ isPdf }}" hint-placeholder-val="{{ false }}"><canvas ref="{{ pdfRef }}" style="display:block;width:100%"></canvas></sc-if>
+                    <sc-if value="{{ notPdf }}" hint-placeholder-val="{{ true }}">
+                      <div style="padding:30px 32px;display:flex;flex-direction:column;gap:8px">
+                        <sc-for list="{{ paper }}" as="p" hint-placeholder-count="6"><div style="font-size:{{ p.fs }};font-weight:{{ p.fw }};margin-top:{{ p.mt }};color:var(--color-neutral-900);line-height:1.5;text-wrap:pretty">{{ p.text }}</div></sc-for>
+                      </div>
+                    </sc-if>
+                    {{ beam }}
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                  <div style="display:flex;align-items:center;height:28px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Recovered structure</span></div>
+                  <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);height:540px;overflow:auto;padding:16px 14px;box-sizing:border-box;display:flex;flex-direction:column;gap:2px">
+                    <sc-for list="{{ toc }}" as="h" hint-placeholder-count="8">
+                      <div style="display:flex;gap:8px;align-items:baseline;padding:5px 8px 5px {{ h.pad }};border-radius:6px;border-left:1px solid {{ h.rule }}">
+                        <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-accent-400);flex:none">{{ h.mark }}</span>
+                        <span style="font-size:{{ h.fs }};color:{{ h.color }};line-height:1.35">{{ h.text }}</span>
+                      </div>
+                    </sc-for>
+                    <sc-if value="{{ tocEmpty }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:var(--color-neutral-500)">No headings detected — the size splitter will do all the cutting.</div></sc-if>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                  <div style="display:flex;align-items:center;height:28px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">extracted.md</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ mdCount }}</span></div>
+                  <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);height:540px;overflow:auto;padding:12px 0;box-sizing:border-box;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;line-height:1.7">
+                    <sc-for list="{{ md }}" as="l" hint-placeholder-count="8">
+                      <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding-right:14px;margin-top:{{ l.mt }}">
+                        <span style="text-align:right;color:var(--color-neutral-700)">{{ l.n }}</span>
+                        <span style="white-space:pre-wrap;word-break:break-word;color:{{ l.color }}"><span style="color:var(--color-accent-400)">{{ l.pre }}</span>{{ l.text }}</span>
+                      </div>
+                    </sc-for>
+                    <sc-if value="{{ mdMore }}" hint-placeholder-val="{{ false }}"><div style="padding:8px 0 0 48px;color:var(--color-neutral-500)">{{ mdMoreLabel }}</div></sc-if>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.chunk }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.chunk.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ S.chunk.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.chunk.numColor }};background:var(--color-bg);box-shadow:{{ S.chunk.node }};transition:box-shadow .4s">03</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.chunk.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Chunk</h2>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.chunk.metaRing }}">{{ S.chunk.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px;min-width:0">
+            <sc-if value="{{ S.chunk.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Waiting for Markdown.</div></sc-if>
+            <sc-if value="{{ S.chunk.has }}" hint-placeholder-val="{{ false }}">
+              <div style="border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Cut map</span><span style="font-size:12px;color:var(--color-neutral-500)">one block per chunk · width ∝ characters · tone = section</span></div>
+                <div style="display:flex;gap:2px;align-items:stretch;overflow-x:auto;padding:6px 3px;min-width:0">
+                  <sc-for list="{{ ribbon }}" as="r" hint-placeholder-count="8">
+                    <button onClick="{{ r.onClick }}" title="{{ r.title }}" style="all:unset;cursor:pointer;flex:{{ r.flex }};min-width:3px;height:44px;border-radius:3px;background:{{ r.bg }};box-shadow:{{ r.ring }};transform:{{ r.lift }};transition:transform .2s" style-hover="transform:translateY(-3px)"></button>
+                  </sc-for>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+                  <span class="tag tag-accent" style="font-family:'JetBrains Mono',ui-monospace,monospace">MarkdownHeaderTextSplitter · #, ##, ###</span>
+                  <svg width="18" height="10" viewBox="0 0 18 10"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5"></path></svg>
+                  <span class="tag tag-neutral" style="font-family:'JetBrains Mono',ui-monospace,monospace">RecursiveCharacterTextSplitter · size 1000 · overlap 150</span>
+                  <input class="input" placeholder="Filter chunks…" value="{{ filter }}" onChange="{{ onFilter }}" style="margin-left:auto;width:220px;min-height:32px">
+                </div>
+              </div>
+              <div style="max-height:532px;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));grid-auto-rows:168px;gap:12px;padding:2px;align-content:start">
+                <sc-for list="{{ chunkView }}" as="c" hint-placeholder-count="4">
+                  <button onClick="{{ c.onClick }}" style="all:unset;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:10px;padding:16px 18px 16px 22px;border-radius:var(--radius-md);background:{{ c.bg }};box-shadow:{{ c.ring }};min-width:0;overflow:hidden" style-hover="box-shadow:0 0 0 1px var(--color-accent-500)">
+                    <span style="position:absolute;left:0;top:0;bottom:0;width:3px;background:{{ c.tone }}"></span>
+                    <span style="display:flex;align-items:center;gap:8px">
+                      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-200)">{{ c.id }}</span>
+                      <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ c.size }}</span>
+                    </span>
+                    <span style="font-size:12px;color:var(--color-neutral-300);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.crumbs }}</span>
+                    <span style="font-size:13.5px;line-height:1.55;color:var(--color-neutral-200);max-height:84px;overflow:hidden">{{ c.preview }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ chunkEmpty }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:var(--color-neutral-500)">No chunk matches that filter.</div></sc-if>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.embed }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.embed.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ S.embed.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.embed.numColor }};background:var(--color-bg);box-shadow:{{ S.embed.node }};transition:box-shadow .4s">04</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.embed.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Embed</h2>
+              <span style="font-size:14px;color:var(--color-neutral-400);text-wrap:pretty">Each chunk is tokenized and encoded into a dense, unit-length vector.</span>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.embed.metaRing }}">{{ S.embed.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ S.embed.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Waiting for chunks.</div></sc-if>
+            <sc-if value="{{ S.embed.has }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+                <div style="display:flex;flex-direction:column;gap:7px">
+                  <div style="display:flex;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px"><span style="color:var(--color-neutral-300)">{{ modelLabel }}</span><span style="margin-left:auto;color:var(--color-neutral-500)">{{ modelPctLabel }}</span></div>
+                  <div style="height:3px;border-radius:2px;background:var(--color-neutral-800);overflow:hidden"><div style="height:100%;width:{{ modelPctW }};background:var(--color-accent-500)"></div></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:7px">
+                  <div style="display:flex;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px"><span style="color:var(--color-neutral-300)">mean pooling → L2 normalize</span><span style="margin-left:auto;color:var(--color-neutral-500)">{{ embeddedLabel }}</span></div>
+                  <div style="height:3px;border-radius:2px;background:var(--color-neutral-800);overflow:hidden"><div style="height:100%;width:{{ embedPctW }};background:var(--color-accent);box-shadow:0 0 10px var(--color-accent)"></div></div>
+                </div>
+              </div>
+              <div style="border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);padding:20px 22px 16px;display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+                  <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Semantic fingerprint</span>
+                  <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:var(--color-accent-200)">{{ selId }}</span>
+                  <span style="font-size:12px;color:var(--color-neutral-400);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1">{{ selCrumbs }}</span>
+                  <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-neutral-400)">{{ dimLabel }} · {{ normLabel }}</span>
+                </div>
+                <div style="position:relative;height:150px">
+                  <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg, transparent, var(--color-neutral-700) 48px, var(--color-neutral-700) calc(100% - 48px), transparent)"></div>
+                  <svg viewBox="0 0 384 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+                    <sc-for list="{{ wave }}" as="b" hint-placeholder-count="0"><rect x="{{ b.x }}" y="{{ b.y }}" width="0.62" height="{{ b.h }}" fill="{{ b.c }}"></rect></sc-for>
+                  </svg>
+                  <span style="position:absolute;left:0;top:0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;color:var(--color-neutral-600)">+</span>
+                  <span style="position:absolute;left:0;bottom:0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;color:var(--color-neutral-600)">−</span>
+                </div>
+                <div style="display:flex;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:var(--color-neutral-600)"><span>d0</span><span style="margin-left:auto">d{{ dimMax }}</span></div>
+                <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-neutral-300);word-break:break-all">{{ firstVals }}</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+                <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0">
+                  <div style="display:flex;gap:8px;align-items:baseline"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Tokenizer</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ tokNote }}</span></div>
+                  <div style="display:flex;flex-wrap:wrap;gap:4px;max-height:260px;overflow:auto;align-content:flex-start">
+                    <sc-for list="{{ toks }}" as="t" hint-placeholder-count="12">
+                      <span style="display:inline-flex;flex-direction:column;align-items:center;padding:3px 7px;border-radius:5px;background:{{ t.bg }};box-shadow:0 0 0 1px var(--color-accent-800);font-family:'JetBrains Mono',ui-monospace,monospace"><span style="font-size:12px;color:var(--color-accent-100);white-space:pre">{{ t.t }}</span><span style="font-size:9px;color:var(--color-neutral-500)">{{ t.id }}</span></span>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0">
+                  <div style="display:flex;gap:8px;align-items:baseline"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Embedding matrix</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ matLabel }}</span></div>
+                  <div style="max-height:220px;overflow-y:auto;overflow-x:hidden;border-radius:3px">
+                    <canvas ref="{{ matRef }}" onClick="{{ onMatClick }}" style="display:block;width:100%;cursor:pointer;border-radius:3px"></canvas>
+                  </div>
+                  <span style="font-size:11.5px;color:var(--color-neutral-500)">Each row is a chunk, each column a dimension. Click a row to inspect it.</span>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.store }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.store.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ S.store.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.store.numColor }};background:var(--color-bg);box-shadow:{{ S.store.node }};transition:box-shadow .4s">05</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.store.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Vector store</h2>
+              <span style="font-size:14px;color:var(--color-neutral-400);text-wrap:pretty">Records persist by chunk_id. Projected to 3-d, nearby points share meaning.</span>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.store.metaRing }}">{{ S.store.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+              <div style="position:relative;height:560px;border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);overflow:hidden">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 55%, color-mix(in srgb, var(--color-section) 60%, transparent), transparent 75%)"></div>
+                <canvas ref="{{ canvasRef }}" onPointerDown="{{ onCvDown }}" onPointerMove="{{ onCvMove }}" onPointerUp="{{ onCvUp }}" onPointerLeave="{{ onCvLeave }}" style="position:relative;display:block;width:100%;height:100%;cursor:grab;touch-action:none"></canvas>
+                <div style="position:absolute;left:18px;top:16px;display:flex;flex-direction:column;gap:6px;pointer-events:none">
+                  <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Collection · {{ collection }}</span>
+                  <sc-for list="{{ legend }}" as="g" hint-placeholder-count="0">
+                    <div style="display:flex;align-items:center;gap:8px;font-size:12.5px"><span style="width:8px;height:8px;border-radius:4px;background:{{ g.color }};box-shadow:0 0 8px {{ g.color }}"></span><span style="color:var(--color-neutral-200)">{{ g.label }}</span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:var(--color-neutral-500)">{{ g.size }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="position:absolute;right:18px;top:16px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500);text-align:right;pointer-events:none;display:flex;flex-direction:column;gap:3px"><span>{{ pcaVar }}</span><span>drag to rotate · click a point</span></div>
+                <div style="position:absolute;left:18px;bottom:14px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500);pointer-events:none">{{ pcaNote }}</div>
+              </div>
+              <sc-if value="{{ S.store.has }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+                  <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0">
+                    <div style="display:flex;align-items:baseline;gap:8px;padding-right:6px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Nearest neighbours of {{ selId }}</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">cosine similarity</span></div>
+                    <sc-for list="{{ nb }}" as="n" hint-placeholder-count="5">
+                      <button onClick="{{ n.onClick }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:86px minmax(0,1fr) 64px;gap:12px;align-items:center;padding:7px 6px;border-radius:6px;font-size:12.5px" style-hover="background:color-mix(in srgb, var(--color-text) 6%, transparent)">
+                        <span style="font-family:'JetBrains Mono',ui-monospace,monospace;color:var(--color-accent-300)">{{ n.id }}</span>
+                        <span style="color:var(--color-neutral-300);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.crumbs }}</span>
+                        <span style="display:flex;flex-direction:column;gap:3px;align-items:flex-end"><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;color:var(--color-neutral-100)">{{ n.cos }}</span><span style="height:2px;width:{{ n.bar }};background:var(--color-accent-400);border-radius:1px"></span></span>
+                      </button>
+                    </sc-for>
+                  </div>
+                  <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0">
+                    <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Stored record</span>
+                    <div style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;line-height:1.65;overflow:auto">
+                      <sc-for list="{{ recordLines }}" as="l" hint-placeholder-count="6"><div style="white-space:pre"><sc-for list="{{ l.segs }}" as="g"><span style="color:{{ g.c }}">{{ g.t }}</span></sc-for></div></sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.index }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.index.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ S.index.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.index.numColor }};background:var(--color-bg);box-shadow:{{ S.index.node }};transition:box-shadow .4s">06</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.index.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Inverted index</h2>
+              <span style="font-size:14px;color:var(--color-neutral-400);text-wrap:pretty">BM25 maps every term to the chunks that contain it — the keyword half of retrieval.</span>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.index.metaRing }}">{{ S.index.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ S.index.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Waiting for chunks.</div></sc-if>
+            <sc-if value="{{ S.index.has }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);overflow:hidden">
+                <sc-for list="{{ ixStats }}" as="s" hint-placeholder-count="5">
+                  <div style="display:flex;flex-direction:column;gap:4px;padding:18px 20px;background:color-mix(in srgb, var(--color-bg) 30%, transparent)"><span style="font-size:34px;font-weight:500;letter-spacing:-0.02em;line-height:1">{{ s.v }}</span><span style="font-size:12px;color:var(--color-neutral-400)">{{ s.k }}</span></div>
+                </sc-for>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+                <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0">
+                  <form onSubmit="{{ onTermSubmit }}" style="display:flex;gap:8px">
+                    <input class="input" placeholder="Look up a term…" value="{{ termQuery }}" onChange="{{ onTermQuery }}" style="flex:1">
+                    <button class="btn btn-secondary" type="submit">Inspect</button>
+                  </form>
+                  <sc-if value="{{ termMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:var(--color-neutral-400)">{{ termMsg }}</div></sc-if>
+                  <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Term constellation · size = document frequency</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;max-height:300px;overflow:auto;align-content:flex-start">
+                    <sc-for list="{{ cloud }}" as="t" hint-placeholder-count="14">
+                      <button onClick="{{ t.onClick }}" title="{{ t.title }}" style="all:unset;cursor:pointer;font-size:{{ t.fs }};color:{{ t.color }};text-shadow:{{ t.glow }};line-height:1.25;letter-spacing:-0.01em" style-hover="color:var(--color-accent-200)">{{ t.term }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                  <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:22px;font-weight:500;color:var(--color-accent-200)">"{{ termSel }}"</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-neutral-400)">{{ termIdf }}</span></div>
+                  <div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);max-height:340px;overflow:auto;padding:14px 16px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;line-height:1.75">
+                    <sc-for list="{{ postLines }}" as="l" hint-placeholder-count="6"><div style="white-space:pre"><sc-for list="{{ l.segs }}" as="g"><span style="color:{{ g.c }}">{{ g.t }}</span></sc-for></div></sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.retrieve }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.retrieve.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ S.retrieve.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.retrieve.numColor }};background:var(--color-bg);box-shadow:{{ S.retrieve.node }};transition:box-shadow .4s">07</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.retrieve.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Interrogate</h2>
+              <span style="font-size:14px;color:var(--color-neutral-400);text-wrap:pretty">Ask a question.</span>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.retrieve.metaRing }}">{{ S.retrieve.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ S.retrieve.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Opens once the vector store and index are built.</div></sc-if>
+            <sc-if value="{{ S.retrieve.has }}" hint-placeholder-val="{{ false }}">
+              <form onSubmit="{{ onSearch }}" style="display:flex;align-items:center;gap:12px;padding:8px 8px 8px 20px;border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);box-shadow:0 0 0 1px var(--color-accent-600), 0 0 60px -20px color-mix(in srgb, var(--color-accent) 60%, transparent)">
+                <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:20px;color:var(--color-accent)">›</span>
+                <input placeholder="Ask the evidence a question…" value="{{ query }}" onChange="{{ onQuery }}" style="flex:1;min-width:0;background:transparent;border:0;outline:none;font:inherit;font-size:20px;color:var(--color-text);caret-color:var(--color-accent);padding:10px 0">
+                <button class="btn btn-primary" type="submit" style="padding:10px 20px;font-size:15px">{{ searchLabel }}</button>
+              </form>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <sc-for list="{{ suggestions }}" as="q" hint-placeholder-count="3"><button class="btn btn-secondary" onClick="{{ q.onClick }}" style="font-size:12.5px;padding:5px 12px">{{ q.text }}</button></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.rewrite }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ SI.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:-60px;width:1px;background:{{ SI.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ SI.numColor }};background:var(--color-bg);box-shadow:{{ SI.node }};transition:box-shadow .4s">08</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ SI.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Rewrite · Retrieve · Fuse</h2>
+              <span style="font-size:14px;color:var(--color-neutral-400);text-wrap:pretty">Two rewrites, two searches, one ranked list.</span>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ SI.metaRing }}">{{ SI.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ SI.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Ask the evidence a question above to open the investigation.</div></sc-if>
+            <sc-if value="{{ SI.has }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) 112px minmax(220px,280px);align-items:stretch">
+                <div ref="{{ refs.recall }}" style="display:grid;grid-template-rows:1fr 1fr;gap:14px;min-width:0">
+                  <div style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding:14px 16px;border-radius:var(--radius-lg);border:1px dashed var(--color-accent-600);background:color-mix(in srgb, var(--color-bg) 55%, transparent);min-width:0">
+                    <div style="display:flex;align-items:flex-start;gap:12px;min-width:0">
+                      <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-300);flex:none">Dense</span>
+                      <span title="{{ rwDense }}" style="font-size:14px;line-height:1.45;color:var(--color-neutral-200);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-width:0;text-wrap:pretty">“{{ rwDense }}”</span>
+                      <span style="margin-left:auto;flex:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-accent-300)">{{ dRet.weight }}</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:6px">
+                      <sc-for list="{{ dRet.tiles }}" as="t" hint-placeholder-count="5">
+                        <button onClick="{{ t.onClick }}" title="{{ t.title }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:9px 10px;border-radius:var(--radius-md);background:{{ t.bg }};box-shadow:0 0 0 1px {{ t.ring }};min-width:0;opacity:{{ t.op }};transition:opacity .4s, box-shadow .2s" style-hover="box-shadow:0 0 0 1px var(--color-accent-400)">
+                          <span style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:var(--color-neutral-500)">{{ t.rank }}</span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ t.idColor }}">{{ t.short }}</span><sc-if value="{{ t.both }}" hint-placeholder-val="{{ false }}"><span title="found by both retrievers" style="margin-left:auto;width:6px;height:6px;border-radius:3px;background:var(--color-accent);box-shadow:0 0 8px var(--color-accent)"></span></sc-if></span>
+                          <span style="font-size:11.5px;color:var(--color-neutral-400);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ t.sec }}</span>
+                          <span style="height:2px;border-radius:1px;background:var(--color-neutral-800)"><span style="display:block;height:100%;width:{{ t.bar }};border-radius:1px;background:var(--color-accent-400)"></span></span>
+                        </button>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{ dRet.empty }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:var(--color-neutral-500)">No chunk contains these terms.</div></sc-if>
+                  </div>
+                  <div style="display:flex;flex-direction:column;justify-content:center;gap:10px;padding:14px 16px;border-radius:var(--radius-lg);border:1px dashed var(--color-neutral-600);background:color-mix(in srgb, var(--color-bg) 55%, transparent);min-width:0">
+                    <div style="display:flex;align-items:flex-start;gap:12px;min-width:0">
+                      <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-300);flex:none">Sparse</span>
+                      <div style="display:flex;flex-wrap:wrap;gap:4px;min-width:0">
+                        <sc-for list="{{ sparseChips }}" as="k" hint-placeholder-count="4"><span title="{{ k.df }}" style="padding:2px 8px;border-radius:5px;background:{{ k.bg }};box-shadow:0 0 0 1px {{ k.ring }};font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:{{ k.color }}">{{ k.t }}</span></sc-for>
+                      </div>
+                      <span style="margin-left:auto;flex:none;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-300)">{{ sRet.weight }}</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:6px">
+                      <sc-for list="{{ sRet.tiles }}" as="t" hint-placeholder-count="5">
+                        <button onClick="{{ t.onClick }}" title="{{ t.title }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:9px 10px;border-radius:var(--radius-md);background:{{ t.bg }};box-shadow:0 0 0 1px {{ t.ring }};min-width:0;opacity:{{ t.op }};transition:opacity .4s, box-shadow .2s" style-hover="box-shadow:0 0 0 1px var(--color-accent-400)">
+                          <span style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:var(--color-neutral-500)">{{ t.rank }}</span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ t.idColor }}">{{ t.short }}</span><sc-if value="{{ t.both }}" hint-placeholder-val="{{ false }}"><span title="found by both retrievers" style="margin-left:auto;width:6px;height:6px;border-radius:3px;background:var(--color-accent);box-shadow:0 0 8px var(--color-accent)"></span></sc-if></span>
+                          <span style="font-size:11.5px;color:var(--color-neutral-400);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ t.sec }}</span>
+                          <span style="height:2px;border-radius:1px;background:var(--color-neutral-800)"><span style="display:block;height:100%;width:{{ t.bar }};border-radius:1px;background:var(--color-accent-400)"></span></span>
+                        </button>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{ sRet.empty }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:var(--color-neutral-500)">No chunk contains these terms.</div></sc-if>
+                  </div>
+                </div>
+                <div style="position:relative;min-height:200px">
+                  <svg viewBox="0 0 132 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+                    <path d="M0 25 C 44 25, 40 50, 66 50" fill="none" stroke="var(--color-accent-500)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                    <path d="M0 75 C 44 75, 40 50, 66 50" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                    <path d="M66 50 H132" fill="none" stroke="var(--color-accent-500)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                  </svg>
+                  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
+                    <div style="width:72px;height:72px;border-radius:36px;padding:3px;box-sizing:border-box;background:{{ donut }};box-shadow:{{ fuseGlow }};transition:box-shadow .4s">
+                      <div style="width:100%;height:100%;border-radius:50%;background:var(--color-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px"><span style="font-size:15px;font-weight:500;color:var(--color-text)">RRF</span><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9.5px;color:var(--color-neutral-500)">k = 60</span></div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div ref="{{ refs.fuse }}" style="display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);min-width:0">
+                  <div style="display:flex;align-items:baseline;gap:8px;padding:0 2px 4px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Retrieved</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ kLabel }}</span></div>
+                  <sc-for list="{{ fusedTop }}" as="r" hint-placeholder-count="5">
+                    <button onClick="{{ r.onClick }}" title="{{ r.title }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:20px minmax(0,1fr) 52px;gap:10px;align-items:center;padding:8px 10px;border-radius:var(--radius-md);background:{{ r.bg }};box-shadow:0 0 0 1px {{ r.ring }};opacity:{{ r.op }};transition:opacity .4s" style-hover="box-shadow:0 0 0 1px var(--color-accent-500)">
+                      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ r.rank }}</span>
+                      <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;color:var(--color-accent-200)">{{ r.short }}</span><span style="font-size:11.5px;color:var(--color-neutral-400);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.sec }}</span></span>
+                      <span style="display:flex;height:5px;border-radius:3px;background:var(--color-neutral-800);overflow:hidden"><span style="width:{{ r.dW }};background:var(--color-accent-400)"></span><span style="width:{{ r.sW }};background:var(--color-neutral-500)"></span></span>
+                    </button>
+                  </sc-for>
+                  <span style="padding:4px 2px 0;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10.5px;color:var(--color-neutral-600)">{{ moreLabel }}</span>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+
+      <section ref="{{ refs.synth }}" style="position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;padding-top:56px;opacity:{{ S.synth.op }};transition:opacity .4s">
+        <div style="position:relative;display:flex;justify-content:center">
+          <div style="position:absolute;top:44px;bottom:0px;width:1px;background:{{ S.synth.line }}"></div>
+          <div style="position:relative;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;color:{{ S.synth.numColor }};background:var(--color-bg);box-shadow:{{ S.synth.node }};transition:box-shadow .4s">09</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+          <div style="position:absolute;left:40px;right:-40px;top:20px;height:420px;pointer-events:none;background:radial-gradient(ellipse 50% 60% at 30% 30%, color-mix(in srgb, var(--color-section-glow) 45%, transparent), transparent 70%);opacity:{{ S.synth.glow }};transition:opacity .6s"></div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;min-height:44px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.035em;color:#fff">Synthesize</h2>
+            </div>
+            <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-accent-300);padding:5px 10px;border-radius:999px;box-shadow:0 0 0 1px {{ S.synth.metaRing }}">{{ S.synth.meta }}</span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:16px">
+            <sc-if value="{{ S.synth.wait }}" hint-placeholder-val="{{ true }}"><div style="border-radius:var(--radius-md);background:color-mix(in srgb, var(--color-bg) 72%, transparent);box-shadow:0 0 0 1px var(--color-neutral-800);padding:22px;font-size:13px;color:var(--color-neutral-500);display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:3px;background:var(--color-neutral-700)"></span>Waiting for retrieved docs.</div></sc-if>
+            <sc-if value="{{ S.synth.has }}" hint-placeholder-val="{{ false }}">
+
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:start">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) 112px;align-items:stretch;min-width:0">
+                <div style="display:grid;grid-template-rows:auto auto;gap:14px;min-width:0">
+                  <div style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border-radius:var(--radius-lg);border:1px dashed var(--color-neutral-600);background:color-mix(in srgb, var(--color-bg) 55%, transparent);min-width:0">
+                    <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-300)">Query</span>
+                    <span title="{{ invQ }}" style="font-size:15px;line-height:1.45;color:var(--color-neutral-100);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">“{{ invQ }}”</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:10px;padding:14px 16px;border-radius:var(--radius-lg);border:1px dashed var(--color-accent-600);background:color-mix(in srgb, var(--color-bg) 55%, transparent);min-width:0">
+                    <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-300)">Context</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ ctxLabel }}</span></div>
+                    <div style="display:flex;flex-direction:column;gap:4px">
+                      <sc-for list="{{ ctxItems }}" as="c" hint-placeholder-count="5">
+                        <button onClick="{{ c.onClick }}" title="{{ c.crumbs }}" style="all:unset;cursor:pointer;display:grid;grid-template-columns:50px minmax(0,1fr);gap:10px;align-items:center;padding:6px 8px;border-radius:6px;font-size:12px" style-hover="background:color-mix(in srgb, var(--color-accent-900) 70%, transparent)"><span style="font-family:'JetBrains Mono',ui-monospace,monospace;color:var(--color-accent-200)">{{ c.short }}</span><span style="color:var(--color-neutral-400);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.sec }}</span></button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+                <div style="position:relative;min-height:200px">
+                  <svg viewBox="0 0 112 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+                    <path d="M0 18 C 40 18, 34 50, 56 50" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                    <path d="M0 62 C 40 62, 34 50, 56 50" fill="none" stroke="var(--color-accent-500)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                    <path d="M56 50 H112" fill="none" stroke="var(--color-accent-500)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                  </svg>
+                  <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
+                    <div style="width:64px;height:64px;border-radius:32px;display:flex;align-items:center;justify-content:center;background:var(--color-bg);box-shadow:0 0 0 1px var(--color-accent-500), {{ synthGlow }};transition:box-shadow .4s">
+                      <svg width="26" height="26" viewBox="0 0 256 256" fill="none" stroke="var(--color-accent-200)" stroke-width="18" stroke-linecap="round"><line x1="128" y1="56" x2="128" y2="200"></line><line x1="56" y1="128" x2="200" y2="128"></line></svg>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div style="position:relative;display:flex;flex-direction:column;gap:16px;padding:24px 26px;border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-accent-600), 0 0 60px -20px color-mix(in srgb, var(--color-accent) 60%, transparent);min-width:0;overflow:hidden">
+                  <div style="position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:90px;background:radial-gradient(circle, color-mix(in srgb, var(--color-accent) 25%, transparent), transparent 70%);pointer-events:none"></div>
+                  <div style="position:relative;display:flex;align-items:baseline;gap:8px"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-300)">Final answer</span><span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ synthMode }}</span></div>
+                  <sc-if value="{{ answerWaiting }}" hint-placeholder-val="{{ false }}"><div style="position:relative;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--color-neutral-400)">{{ waitDot }}{{ answerWaitLabel }}</div></sc-if>
+                  <div style="position:relative;font-size:19px;line-height:1.65;letter-spacing:-0.005em;color:var(--color-neutral-100);text-wrap:pretty"><sc-for list="{{ answerSegs }}" as="g" hint-placeholder-count="0"><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span>{{ g.t }}</span></sc-if><sc-if value="{{ g.cite }}" hint-placeholder-val="{{ false }}"><button onClick="{{ g.onClick }}" style="all:unset;cursor:pointer;display:inline-block;margin:0 2px;padding:0 6px;border-radius:5px;vertical-align:2px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;line-height:18px;color:var(--color-accent-100);background:var(--color-accent-900);box-shadow:0 0 0 1px var(--color-accent-600)" style-hover="background:var(--color-accent-800)">{{ g.t }}</button></sc-if></sc-for>{{ caret }}</div>
+                  <sc-if value="{{ hasSources }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:relative;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500);margin-right:4px">Sources</span><sc-for list="{{ sources }}" as="c" hint-placeholder-count="0"><button class="tag tag-outline" onClick="{{ c.onClick }}" title="{{ c.crumbs }}" style="cursor:pointer;font-family:'JetBrains Mono',ui-monospace,monospace">{{ c.id }}</button></sc-for></div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <div style="position:fixed;right:20px;bottom:20px;z-index:40;width:380px;max-width:calc(100vw - 40px);border-radius:var(--radius-lg);background:linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface) 50%, transparent));box-shadow:0 0 0 1px var(--color-neutral-800), 0 24px 60px -30px rgba(0,0,0,0.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden">
+    <button onClick="{{ onToggleLog }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:flex;align-items:center;gap:10px;padding:10px 14px" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+      <span style="display:flex">{{ logDot }}</span>
+      <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-500)">Case log</span>
+      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;color:var(--color-neutral-500)">{{ logCount }}</span>
+      <span style="margin-left:auto;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:var(--color-neutral-400)">{{ logChevron }}</span>
+    </button>
+    <sc-if value="{{ logOpen }}" hint-placeholder-val="{{ true }}">
+      <div ref="{{ logRef }}" style="height:190px;overflow:auto;padding:4px 14px 12px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;line-height:1.7;color:var(--color-neutral-300)">
+        <sc-if value="{{ noLog }}" hint-placeholder-val="{{ true }}"><div style="color:var(--color-neutral-600)">Events stream here as the document moves through the pipeline.</div></sc-if>
+        <sc-for list="{{ log }}" as="l" hint-placeholder-count="0"><div style="display:flex;gap:8px"><span style="color:var(--color-neutral-600);flex:none">{{ l.t }}</span><span style="word-break:break-word">{{ l.m }}</span></div></sc-for>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pace&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cinematic&quot;,&quot;realtime&quot;],&quot;default&quot;:&quot;cinematic&quot;,&quot;tsType&quot;:&quot;'cinematic' | 'realtime'&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;autoFollow&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;autoRotate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Vector view&quot;},&quot;denseWeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.5,&quot;max&quot;:0.95,&quot;step&quot;:0.05,&quot;default&quot;:0.7,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Investigate&quot;},&quot;topK&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:3,&quot;max&quot;:8,&quot;default&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Investigate&quot;}}">
+class Component extends DCLogic {
+  state = this.fresh();
+  matRef = React.createRef(); canvasRef = React.createRef(); pdfRef = React.createRef(); inputRef = React.createRef(); logRef = React.createRef();
+  refs = { upload: React.createRef(), extract: React.createRef(), chunk: React.createRef(), embed: React.createRef(), store: React.createRef(), index: React.createRef(), retrieve: React.createRef(), rewrite: React.createRef(), recall: React.createRef(), fuse: React.createRef(), synth: React.createRef() };
+  yaw = 0.6; pitch = 0.35; hover = -1;
+
+  fresh() {
+    return { st: {}, ms: {}, metric: {}, file: null, uploadPct: 0, lines: [], mdShown: 0, note: '', pdfPages: 0, pdfPage: 1,
+      chunksShown: 0, nChunks: 0, selected: 0, filter: '', model: { status: 'idle', pct: 0, name: '' }, embedded: 0, dim: 0,
+      toks: [], tokNote: '', legend: [], explained: [], nb: [], termSel: '', termQuery: '', termMsg: '', query: '', results: null,
+      searching: false, inv: null, invShown: 0, log: [], dragging: false, ready: false, rev: 0, collection: '—',
+      logOpen: (this.state && this.state.logOpen != null) ? this.state.logOpen : false };
+  }
+
+  componentDidMount() {
+    this.E = import(new URL('./rag-api.js', location.href).href);
+    const loop = () => { this.raf = requestAnimationFrame(loop); try { this.draw(); const key = (this.vecs ? this.vecs.length : 0) + ':' + this.state.selected + ':' + (this.matRef.current ? this.matRef.current.clientWidth : 0); if (key !== this.matKey && this.matRef.current && this.vecs) { this.matKey = key; this.drawMatrix(); } } catch (e) {} };
+    loop();
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); this.dead = true; if (this.abortCtrl) this.abortCtrl.abort(); }
+  componentDidUpdate(pp, ps) {
+    ps = ps || {};
+    if (this.pdfDoc && (ps.pdfPage !== this.state.pdfPage || ps.pdfPages !== this.state.pdfPages || !this.pdfRendered)) this.renderPdf();
+    const lg = this.logRef.current; if (lg && ps.log !== this.state.log) lg.scrollTop = lg.scrollHeight;
+  }
+
+  pace() { return (this.props.pace ?? 'cinematic') === 'realtime' ? 0 : 1; }
+  wait(ms) { return new Promise(r => setTimeout(r, ms * this.pace())); }
+  log(m) { const t = '+' + ((performance.now() - (this.t0 || performance.now())) / 1000).toFixed(3) + 's'; this.setState(s => ({ log: [...s.log, { t, m }].slice(-200) })); }
+  mark(k, v) { this.setState(s => ({ st: { ...s.st, [k]: v } })); }
+  metric(k, v) { this.setState(s => ({ metric: { ...s.metric, [k]: v } })); }
+  msSet(k, v) { this.setState(s => ({ ms: { ...s.ms, [k]: v } })); }
+  follow(k) {
+    if ((this.props.autoFollow ?? true) === false) return;
+    const el = this.refs[k] && this.refs[k].current; if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior: 'smooth' });
+  }
+  async animate(key, to, dur) {
+    if (!this.pace()) { this.setState({ [key]: to }); return; }
+    const steps = Math.max(1, Math.round(dur / 40));
+    for (let i = 1; i <= steps; i++) { if (this.stale()) return; this.setState({ [key]: Math.round(to * i / steps * 1000) / 1000 }); await new Promise(r => setTimeout(r, 40)); }
+  }
+
+  setModel(m) { this.setState(s => ({ model: { ...s.model, ...m } })); }
+  stale() { return this.dead || this.myRun !== this.runId; }
+
+  async run(src) {
+    const E = await this.E; this.Eng = E;
+    if (this.abortCtrl) this.abortCtrl.abort();
+    const ctrl = new AbortController(); this.abortCtrl = ctrl;
+    this.runId = (this.runId || 0) + 1; this.myRun = this.runId; const id = this.runId;
+    const stale = () => this.dead || id !== this.runId;
+    this.t0 = performance.now(); this.pdfDoc = null; this.pdfRendered = false; this.vecs = null; this.chunks = []; this.pts = null; this.ix = null; this.chunkToks = []; this.neighbors = [];
+    this.setState(this.fresh());
+    let cur = 'upload';
+    try {
+      let fileObj;
+      if (src.sample) {
+        fileObj = new File([E.SAMPLE_MD], E.SAMPLE_NAME, { type: 'text/markdown' });
+      } else {
+        fileObj = src.file;
+      }
+
+      // If PDF, open locally with pdf.js solely for visual page rendering in the left preview panel
+      const kind = E.fileKind(fileObj.name);
+      if (kind === 'pdf') {
+        (async () => {
+          try {
+            const buf = await fileObj.arrayBuffer();
+            const pdfjs = await import(E.PDFJS.lib);
+            pdfjs.GlobalWorkerOptions.workerSrc = E.PDFJS.worker;
+            const doc = await pdfjs.getDocument({ data: new Uint8Array(buf) }).promise;
+            if (!stale()) { this.pdfDoc = doc; this.setState({ pdfPages: doc.numPages, pdfPage: 1 }); }
+          } catch (e) {}
+        })();
+      }
+
+      const vecs = [];
+      for await (const ev of E.openCase(fileObj, { signal: ctrl.signal })) {
+        if (stale()) return;
+        if (ev.event === 'log') {
+          this.log(ev.message);
+          continue;
+        }
+        if (ev.event === 'error') {
+          cur = ev.stage || cur;
+          throw new Error(ev.message || 'pipeline failed on backend');
+        }
+        if (ev.event === 'stage' && ev.status === 'running') {
+          cur = ev.stage;
+          this.mark(cur, 'running');
+          this.follow(cur);
+          if (cur === 'embed' && ev.data) {
+            this.embedModelName = ev.data.model || 'BAAI/bge-small-en-v1.5';
+            this.setModel({ status: 'loading', pct: 0, name: `${this.embedModelName} · ${ev.data.device || 'cpu'}` });
+          }
+          continue;
+        }
+        if (ev.event === 'embed_progress') {
+          (ev.vectors || []).forEach(a => vecs.push(Float32Array.from(a)));
+          (ev.tokens || []).forEach((tokList, idx) => {
+            this.chunkToks[ev.offset + idx] = tokList.map(([t, tid]) => ({ t: String(t), id: tid }));
+          });
+          (ev.token_counts || []).forEach((cnt, idx) => {
+            if (this.chunks[ev.offset + idx]) this.chunks[ev.offset + idx].tok = cnt;
+          });
+          this.vecs = vecs;
+          const pct = ev.total ? vecs.length / ev.total : 1;
+          this.setModel({ status: pct >= 1 ? 'ready' : 'loading', pct });
+          this.setState({ embedded: vecs.length, dim: vecs[0] ? vecs[0].length : 0 });
+          if (vecs.length <= (ev.vectors ? ev.vectors.length : 8)) this.updateToks(0);
+          await this.wait(60);
+          continue;
+        }
+        if (ev.event === 'stage' && ev.status === 'done') {
+          const k = ev.stage; const d = ev.data || {};
+          this.msSet(k, ev.ms ?? 0);
+          if (k === 'upload') {
+            const size = d.size || fileObj.size;
+            const knd = d.kind || kind;
+            const sha = d.sha || '';
+            const mime = { pdf: 'application/pdf', docx: 'application/vnd.openxmlformats…', md: 'text/markdown', txt: 'text/plain' }[knd];
+            const file = { name: d.name || fileObj.name, size, kind: knd, mime, sha, docId: 'doc_' + sha.slice(0, 6), sizeLabel: size > 1e6 ? (size / 1e6).toFixed(2) + ' MB' : (size / 1e3).toFixed(1) + ' KB' };
+            this.setState({ file }); this.log(`received ${file.name} · ${file.sizeLabel} (backend)`);
+            await this.animate('uploadPct', 1, 600);
+            this.log(`sha256 ${sha.slice(0, 12)}… → ${file.docId}`);
+            this.metric('upload', file.sizeLabel + ' · ' + knd.toUpperCase());
+          } else if (k === 'extract') {
+            const lines = d.lines || []; const note = d.note || '';
+            const h = [1, 2, 3].map(n => lines.filter(l => l.kind === 'h' + n).length);
+            this.setState({ lines, note }); this.log(`extracted ${lines.length} blocks · # ${h[0]} · ## ${h[1]} · ### ${h[2]}`);
+            await this.animate('mdShown', lines.length, Math.min(1800, 250 + lines.length * 35));
+            this.metric('extract', `${lines.length} blocks · ${h[0] + h[1] + h[2]} headings`);
+          } else if (k === 'chunk') {
+            const chunks = (d.chunks || []).map(c => ({ ...c, page: c.page || 1 }));
+            this.chunks = chunks;
+            this.setState({ nChunks: chunks.length });
+            const avg = chunks.length ? Math.round(chunks.reduce((a, c) => a + c.chars, 0) / chunks.length) : 0;
+            this.log(`split into ${chunks.length} chunks via ${d.splitter || 'MarkdownDocumentSplitter'} (avg ${avg} chars)`);
+            await this.animate('chunksShown', chunks.length, Math.min(1500, 200 + chunks.length * 60));
+            this.metric('chunk', `${chunks.length} chunks`);
+          } else if (k === 'embed') {
+            this.embedModelName = d.model || this.embedModelName || 'BAAI/bge-small-en-v1.5';
+            this.tokenizerName = d.tokenizer || 'WordPiece';
+            this.setModel({ status: 'ready', pct: 1, name: `${this.embedModelName} · HuggingFace (Python)` });
+            this.updateToks(this.state.selected);
+            this.log(`encoded ${d.count} vectors × ${d.dim}-d · ${this.embedModelName}`);
+            this.metric('embed', `${d.count} × ${d.dim}-d`);
+          } else if (k === 'store') {
+            const coords = d.coords || []; const explained = d.explained || []; const assign = d.assign || []; const labels = d.legend || [];
+            this.pts = coords.map((p, i) => ({ p, c: assign[i] || 0 }));
+            this.neighbors = d.neighbors || [];
+            this.storeT0 = performance.now();
+            this.setState({ legend: labels, explained, collection: d.collection || 'collection0' });
+            this.updateNb(this.state.selected);
+            this.log(`stored ${d.count || this.vecs.length} records in Chroma (${d.collection || 'collection0'}) · PCA ${(explained.reduce((a, b) => a + b, 0) * 100).toFixed(1)}% variance in 3-d · ${labels.length} clusters`);
+            await this.wait(700);
+            this.metric('store', `${d.count || this.vecs.length} vectors · ${labels.length} clusters`);
+          } else if (k === 'index') {
+            const postings = new Map(Object.entries(d.postings || {}));
+            this.ix = { postings, idfs: d.idfs || {}, N: d.N || this.chunks.length, avgdl: d.avgdl || 0, k1: d.k1 ?? 1.2, b: d.b ?? 0.75, terms: d.terms || postings.size, tokens: d.tokens || 0 };
+            this.topTerms = d.top_terms || [];
+            this.setState({ termSel: this.topTerms.length ? this.topTerms[0][0] : '' });
+            this.log(`BM25 index · ${this.ix.terms} unique terms · avgdl ${this.ix.avgdl.toFixed(1)} · k₁ ${this.ix.k1}`);
+            await this.wait(500);
+            this.metric('index', `${this.ix.terms} terms`);
+          }
+          this.mark(k, 'done');
+          continue;
+        }
+        if (ev.event === 'complete') {
+          const heads = [...new Set(this.chunks.map(c => c.meta.h2).filter(Boolean).concat(this.chunks.map(c => c.meta.h1).filter(Boolean)))].slice(0, 3).map(h => h.replace(/^[\d.\s]+/, ''));
+          this.suggest = heads.length ? heads.map(h => 'What does it say about ' + h.toLowerCase() + '?') : (this.topTerms || []).slice(0, 3).map(t => t[0]);
+          this.setState({ ready: true }); this.mark('retrieve', 'ready'); this.metric('retrieve', 'ready for queries');
+          this.log(`case ready · ${((ev.ms || (performance.now() - this.t0)) / 1000).toFixed(2)}s total`);
+          this.follow('retrieve');
+        }
+      }
+    } catch (e) {
+      if (stale() || (e && e.name === 'AbortError')) return;
+      this.mark(cur, 'error'); this.log('error · ' + (e.message || e));
+    }
+  }
+
+  updateToks(i) {
+    const c = this.chunks[i]; if (!c) return;
+    const toks = (this.chunkToks && this.chunkToks[i]) || [];
+    const total = c.tok || toks.length;
+    this.setState({ toks: toks.slice(0, 160), tokNote: `${total} ${this.tokenizerName || 'WordPiece'} tokens (${this.embedModelName || 'BGE'})` });
+  }
+  updateNb(i) {
+    const nb = (this.neighbors && this.neighbors[i]) || [];
+    this.nbIdx = nb; this.setState({ nb });
+  }
+  select(i) { if (!this.chunks[i]) return; this.setState({ selected: i }); this.updateToks(i); this.updateNb(i); }
+
+  async renderPdf() {
+    const cv = this.pdfRef.current; if (!cv || !this.pdfDoc) return;
+    this.pdfRendered = true;
+    const page = await this.pdfDoc.getPage(this.state.pdfPage);
+    const w = cv.parentElement.clientWidth || 480; const v1 = page.getViewport({ scale: 1 });
+    const dpr = window.devicePixelRatio || 1; const vp = page.getViewport({ scale: (w / v1.width) * dpr });
+    if (this.pdfTask) { try { this.pdfTask.cancel(); } catch (e) {} }
+    cv.width = vp.width; cv.height = vp.height; cv.style.height = (vp.height / dpr) + 'px';
+    this.pdfTask = page.render({ canvasContext: cv.getContext('2d'), viewport: vp });
+    try { await this.pdfTask.promise; } catch (e) {}
+  }
+
+  cols() {
+    if (this._cols && this._cols.a300) return this._cols;
+    const cs = getComputedStyle(document.documentElement); const g = n => cs.getPropertyValue(n).trim();
+    this._cols = { a300: g('--color-accent-300'), a200: g('--color-accent-200'), acc: g('--color-accent'), n500: g('--color-neutral-500'), n700: g('--color-neutral-700'), n800: g('--color-neutral-800'), n300: g('--color-neutral-300'), n100: g('--color-neutral-100'), surf: g('--color-surface'),
+      cl: [g('--color-accent-300'), g('--color-accent-500'), g('--color-neutral-300'), g('--color-accent-700'), g('--color-neutral-500'), g('--color-accent-200')] };
+    return this._cols;
+  }
+  draw() {
+    const cv = this.canvasRef.current; if (!cv) return;
+    const w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+    const dpr = window.devicePixelRatio || 1;
+    if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+    const g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h);
+    const C = this.cols(); const font = "'JetBrains Mono', ui-monospace, monospace";
+    if (!this.drag && (this.props.autoRotate ?? true)) this.yaw += 0.0025;
+    const R = Math.min(w, h) * 0.34, cx = w / 2, cy = h / 2 + 8;
+    const cy_ = Math.cos(this.yaw), sy = Math.sin(this.yaw), cp = Math.cos(this.pitch), sp = Math.sin(this.pitch);
+    const P = p => { const x1 = p[0] * cy_ + p[2] * sy, z1 = -p[0] * sy + p[2] * cy_; const y1 = p[1] * cp - z1 * sp, z2 = p[1] * sp + z1 * cp; return [cx + x1 * R, cy - y1 * R, z2]; };
+    const floor = [[-1, -1, -1], [1, -1, -1], [1, -1, 1], [-1, -1, 1]].map(P);
+    g.beginPath(); floor.forEach((f, i) => i ? g.lineTo(f[0], f[1]) : g.moveTo(f[0], f[1])); g.closePath();
+    g.fillStyle = 'rgba(139,92,246,0.07)'; g.fill(); g.strokeStyle = C.n800; g.lineWidth = 1; g.stroke();
+    const O = P([-1, -1, -1]);
+    [[1, -1, -1], [-1, 1, -1], [-1, -1, 1]].forEach((e, i) => { const B = P(e); g.strokeStyle = C.n500; g.lineWidth = 1.5; g.beginPath(); g.moveTo(O[0], O[1]); g.lineTo(B[0], B[1]); g.stroke(); g.fillStyle = C.n500; g.font = '11px ' + font; g.fillText('PC' + (i + 1), B[0] + 6, B[1] + 4); });
+    if (!this.pts) {
+      g.fillStyle = C.n500; g.font = '13px Inter, sans-serif'; g.textAlign = 'center';
+      g.fillText(this.state.st.embed === 'running' ? 'embedding chunks…' : 'vectors will appear here', cx, cy); g.textAlign = 'left'; return;
+    }
+    const now = performance.now(); const sel = this.state.selected;
+    const scr = this.pts.map((pt, i) => { const q = P(pt.p); const t = Math.min(1, Math.max(0, (now - this.storeT0 - i * (this.pace() ? 18 : 0)) / 600)); const e = 1 - Math.pow(1 - t, 3); return { x: cx + (q[0] - cx) * e, y: cy + (q[1] - cy) * e, z: q[2], e, i, c: pt.c }; });
+    this.scr = scr;
+    const s0 = scr[sel];
+    if (s0 && this.nbIdx) this.nbIdx.forEach(([j, cs]) => { const q = scr[j]; if (!q) return; g.setLineDash([4, 4]); g.strokeStyle = C.a300; g.globalAlpha = 0.7 * q.e; g.beginPath(); g.moveTo(s0.x, s0.y); g.lineTo(q.x, q.y); g.stroke(); g.setLineDash([]); g.globalAlpha = q.e; g.fillStyle = C.a200; g.font = '10.5px ' + font; g.fillText(cs.toFixed(2), (s0.x + q.x) / 2 + 4, (s0.y + q.y) / 2 - 4); g.globalAlpha = 1; });
+    [...scr].sort((a, b) => a.z - b.z).forEach(s => { g.globalAlpha = s.e * (0.5 + 0.45 * (s.z + 1.6) / 2.6); g.fillStyle = C.cl[s.c % C.cl.length]; g.beginPath(); g.arc(s.x, s.y, (3.5 + 1.8 * (s.z + 1)) * (s.i === this.hover ? 1.5 : 1), 0, 6.283); g.fill(); });
+    g.globalAlpha = 1;
+    if (s0) { g.strokeStyle = C.acc; g.lineWidth = 2; g.beginPath(); g.arc(s0.x, s0.y, 11 + 3 * Math.sin(now / 250), 0, 6.283); g.stroke(); }
+    const hv = scr[this.hover];
+    if (hv) {
+      const c = this.chunks[hv.i]; const label = c.id + '  ' + (Object.values(c.meta).slice(-1)[0] || '');
+      g.font = '12px ' + font; const tw = Math.min(w - 20, g.measureText(label).width + 20);
+      let x = hv.x + 14, y = hv.y - 34; if (x + tw > w - 8) x = hv.x - tw - 14; if (y < 8) y = hv.y + 14;
+      g.fillStyle = C.surf; g.strokeStyle = C.n700; g.beginPath(); g.roundRect ? g.roundRect(x, y, tw, 26, 6) : g.rect(x, y, tw, 26); g.fill(); g.stroke();
+      g.fillStyle = C.n100; g.fillText(label, x + 10, y + 17, tw - 20);
+    }
+  }
+
+  colorize(line) {
+    return line.split(/("[^"]*"|-?\d+\.?\d*)/g).filter(Boolean).map(t => {
+      let c = 'var(--color-neutral-500)';
+      if (t[0] === '"') c = /^"(chunk_|doc_)/i.test(t) ? 'var(--color-neutral-200)' : 'var(--color-accent-300)';
+      else if (/^-?\d/.test(t)) c = 'var(--color-accent-400)';
+      else if (/[A-Za-z]/.test(t)) c = 'var(--color-neutral-300)';
+      return { t, c };
+    });
+  }
+
+  baseVals() {
+    const s = this.state; const chunks = this.chunks || [];
+    const order = ['upload', 'extract', 'chunk', 'embed', 'store', 'index', 'retrieve', 'rewrite', 'recall', 'fuse', 'synth'];
+    const names = ['Upload', 'Extract', 'Chunk', 'Embed', 'Vector store', 'Inverted index', 'Interrogate', 'Rewrite', 'Retrieve', 'Fuse', 'Synthesize'];
+    const ind = st => {
+      if (st === 'running') return React.createElement('span', { style: { width: 8, height: 8, borderRadius: 4, background: 'var(--color-accent)', boxShadow: '0 0 10px var(--color-accent)', animation: 'rdPulse 1s ease-in-out infinite' } });
+      if (st === 'done' || st === 'ready') return React.createElement('svg', { width: 14, height: 14, viewBox: '0 0 256 256' }, React.createElement('path', { d: 'M40 136l56 56L216 72', fill: 'none', stroke: 'currentColor', strokeWidth: 26, strokeLinecap: 'round', strokeLinejoin: 'round' }));
+      if (st === 'error') return React.createElement('span', { style: { fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: 'var(--color-accent-200)' } }, '!');
+      return React.createElement('span', { style: { width: 7, height: 7, borderRadius: 4, boxShadow: '0 0 0 1.5px var(--color-neutral-700)' } });
+    };
+    const steps = order.map((k, i) => {
+      const st = s.st[k]; const ms = s.ms[k];
+      return { n: String(i + 1).padStart(2, '0'), name: names[i], indicator: ind(st), metric: st === 'error' ? 'failed — see case log' : (s.metric[k] || (st === 'running' ? 'working…' : 'pending')),
+        ms: ms != null ? (ms >= 1000 ? (ms / 1000).toFixed(1) + 's' : ms + 'ms') : '',
+        color: st ? 'var(--color-text)' : 'var(--color-neutral-500)', bg: st === 'running' ? 'color-mix(in srgb, var(--color-accent) 10%, transparent)' : 'transparent',
+        onClick: () => this.follow(k) };
+    });
+    const sec = (k, has) => {
+      const st = s.st[k];
+      return { has: !!has, wait: !has, op: has || st ? 1 : 0.55,
+        shadow: st === 'running' ? '0 0 0 1px var(--color-accent-600), 0 0 48px -14px color-mix(in srgb, var(--color-accent) 55%, transparent)' : '0 0 0 1px var(--color-neutral-800)',
+        meta: s.ms[k] != null ? (s.metric[k] || '') : (st === 'running' ? 'running…' : '') };
+    };
+    const S = { upload: sec('upload', !!s.file), extract: sec('extract', s.lines.length > 0), chunk: sec('chunk', s.chunksShown > 0), embed: sec('embed', s.st.embed), store: sec('store', s.legend.length > 0), index: sec('index', !!s.termSel), retrieve: sec('retrieve', s.ready), rewrite: sec('rewrite', !!(s.inv && s.inv.rw)), recall: sec('recall', !!(s.inv && s.inv.dense)), fuse: sec('fuse', !!(s.inv && s.inv.fused)), synth: sec('synth', !!(s.inv && (s.inv.fused || s.inv.answer))) };
+    if (s.st.embed === 'running' && !s.embedded) S.embed.has = true, S.embed.wait = false;
+
+    const running = order.find(k => s.st[k] === 'running'); const err = order.find(k => s.st[k] === 'error');
+    const statusLabel = err ? 'error' : running ? 'processing · ' + names[order.indexOf(running)].toLowerCase() : s.ready ? 'case solved' : 'no case open';
+    const statusClass = err ? 'tag tag-outline' : running ? 'tag tag-accent' : s.ready ? 'tag tag-outline' : 'tag tag-neutral';
+
+    const f = s.file; const isPdf = !!(f && f.kind === 'pdf');
+    const fileMeta = f ? [{ k: 'doc_id', v: f.docId }, { k: 'sha256', v: f.sha.slice(0, 24) + '…' }, { k: 'type', v: f.kind.toUpperCase() + (isPdf && s.pdfPages ? ' · ' + s.pdfPages + ' pages' : '') }, { k: 'route', v: 'POST /api/v1/cases → RAGDetectiveEngine' }] : [];
+
+    const shown = s.lines.slice(0, Math.min(s.mdShown, 1500));
+    const md = []; let n = 1;
+    shown.forEach((l, i) => {
+      const pre = l.kind[0] === 'h' ? '#'.repeat(+l.kind[1]) + ' ' : '';
+      md.push({ n: n++, pre, text: l.text, mt: i && (pre || !l.raw) ? '10px' : '0px', color: pre ? 'var(--color-text)' : l.raw ? 'var(--color-neutral-400)' : 'var(--color-neutral-300)' });
+    });
+    const paper = s.lines.slice(0, 400).map((l, i) => ({ text: l.text, fs: { h1: '22px', h2: '17px', h3: '15px' }[l.kind] || '13px', fw: l.kind[0] === 'h' ? 600 : 400, mt: l.kind[0] === 'h' && i ? '10px' : '0px' }));
+    const hs = [1, 2, 3].map(k => s.lines.filter(l => l.kind === 'h' + k).length);
+    const beam = s.st.extract === 'running' ? React.createElement('div', { style: { position: 'absolute', left: 0, right: 0, height: 3, top: 0, background: 'var(--color-accent)', boxShadow: '0 0 24px 6px color-mix(in srgb, var(--color-accent) 55%, transparent)', animation: 'rdScan 1.4s ease-in-out infinite alternate', pointerEvents: 'none' } }) : null;
+
+    const fl = s.filter.trim().toLowerCase();
+    const chunkView = chunks.slice(0, s.chunksShown).map((c, i) => ({ c, i })).filter(({ c }) => !fl || (c.text + ' ' + Object.values(c.meta).join(' ')).toLowerCase().includes(fl)).slice(0, 300).map(({ c, i }) => ({
+      id: c.id, size: `${c.chars} ch · ≈${c.tok} tok`, crumbs: Object.values(c.meta).join(' › ') || '(no header)', preview: c.text.length > 240 ? c.text.slice(0, 240) + '…' : c.text,
+      bg: i === s.selected ? 'color-mix(in srgb, var(--color-accent-900) 85%, var(--color-surface))' : 'color-mix(in srgb, var(--color-bg) 55%, transparent)',
+      ring: i === s.selected ? '0 0 0 1px var(--color-accent)' : '0 0 0 1px var(--color-neutral-800)', onClick: () => this.select(i) }));
+
+    const m = s.model; const N = s.nChunks || 1;
+    const modelLabel = m.status === 'loading' ? `encoding on backend · ${m.name || 'BAAI/bge-small-en-v1.5'}` : m.status === 'ready' ? (m.name || 'BAAI/bge-small-en-v1.5 · HuggingFace (Python)') : 'model idle';
+    const modelPct = m.status === 'ready' ? 1 : m.pct || 0;
+    const v = this.vecs && this.vecs[s.selected];
+    const cells = v ? Array.from(v.slice(0, 384)).map((x, j) => { const a = Math.min(100, Math.round(Math.abs(x) * 900)); return { title: `d${j} = ${x.toFixed(4)}`, bg: x >= 0 ? `color-mix(in srgb, var(--color-accent-300) ${a}%, var(--color-accent-900))` : `color-mix(in srgb, var(--color-neutral-400) ${a}%, var(--color-neutral-900))` }; }) : [];
+    const norm = v ? Math.sqrt(Array.from(v).reduce((a, x) => a + x * x, 0)) : 0;
+    const sel = chunks[s.selected];
+
+    const C0 = ['var(--color-accent-300)', 'var(--color-accent-500)', 'var(--color-neutral-300)', 'var(--color-accent-700)', 'var(--color-neutral-500)', 'var(--color-accent-200)'];
+    const legend = s.legend.map((g, i) => ({ label: g.label, size: g.size + ' chunks', color: C0[i % C0.length] }));
+    const nb = s.nb.filter(([j]) => chunks[j]).map(([j, c]) => ({ id: chunks[j].id, cos: c.toFixed(3), crumbs: Object.values(chunks[j].meta).slice(-1)[0] || chunks[j].text.slice(0, 40), onClick: () => this.select(j) }));
+    const rec = sel && v ? [
+      '{',
+      `  "id": "${sel.id}",`,
+      `  "embedding": [${Array.from(v.slice(0, 3)).map(x => x.toFixed(3)).join(', ')}, … ${v.length - 3} more],`,
+      `  "document": "${sel.text.slice(0, 34).replace(/"/g, "'")}…",`,
+      `  "metadata": {`,
+      ...Object.entries(sel.meta).map(([k2, v2]) => `    "${k2}": "${String(v2).slice(0, 34).replace(/"/g, "'")}",`),
+      `    "source": "${f ? f.name : ''}", "collection": "${s.collection || 'collection0'}"`,
+      '  }',
+      '}'] : [];
+    const ex = s.explained || [];
+    const pcaNote = ex.length ? `PCA 384→3 · ${ex.map(x => (x * 100).toFixed(1) + '%').join(' / ')} variance · drag to rotate` : 'PCA projection';
+
+    const ix = this.ix; const tsel = s.termSel;
+    const ixStats = ix && s.termSel ? [{ k: 'chunks (N)', v: ix.N }, { k: 'unique terms', v: ix.terms.toLocaleString() }, { k: 'tokens indexed', v: ix.tokens.toLocaleString() }, { k: 'avg chunk length', v: ix.avgdl.toFixed(1) }, { k: `k₁ saturation · b = ${ix.b}`, v: String(ix.k1) }] : [];
+    const topTerms = (this.topTerms || []).map(([w, d]) => ({ term: w, df: d, onClick: () => this.setState({ termSel: w, termMsg: '' }),
+      bg: w === tsel ? 'var(--color-accent-800)' : 'var(--color-neutral-900)', color: w === tsel ? 'var(--color-accent-100)' : 'var(--color-neutral-200)', ring: w === tsel ? 'var(--color-accent-500)' : 'var(--color-neutral-800)' }));
+    let postLines = []; let termIdf = '';
+    if (ix && tsel && ix.postings.get(tsel)) {
+      const p = Object.entries(ix.postings.get(tsel));
+      const L = [`{`, `  "${tsel}": {`, ...p.slice(0, 14).map(([cid, o], i) => `    "${cid}": { "freq": ${o.freq}, "dl": ${o.dl} }${i < Math.min(14, p.length) - 1 || p.length > 14 ? ',' : ''}`), ...(p.length > 14 ? [`    … ${p.length - 14} more`] : []), `  }`, `}`];
+      postLines = L.map(l => ({ segs: this.colorize(l) }));
+      const idfVal = ix.idfs && ix.idfs[tsel] != null ? ix.idfs[tsel] : 0;
+      termIdf = `df ${p.length} · idf ${Number(idfVal).toFixed(3)}`;
+    }
+
+    const results = [];
+
+    return {
+      caseLabel: f ? `${f.docId} · ${f.name}` : 'no document', statusLabel, statusClass,
+      onSample: () => this.run({ sample: true }),
+      onNew: () => { if (this.abortCtrl) this.abortCtrl.abort(); this.runId = (this.runId || 0) + 1; this.chunks = []; this.vecs = null; this.pts = null; this.ix = null; this.pdfDoc = null; this.setState(this.fresh()); if (this.E) this.E.then(E => E.resetCase && E.resetCase()); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      steps, log: s.log, noLog: !s.log.length, logRef: this.logRef, refs: this.refs, S,
+      noFile: !f, hasFile: !!f, file: f || {}, fileExt: f ? f.kind.toUpperCase() : '', fileMeta,
+      uploadPctW: Math.round(s.uploadPct * 100) + '%', uploadPctLabel: Math.round(s.uploadPct * 100) + '%', uploadLabel: s.uploadPct >= 1 ? 'received · fingerprinted' : 'uploading…',
+      inputRef: this.inputRef, onBrowse: () => this.inputRef.current && this.inputRef.current.click(),
+      onPick: e => { const fl2 = e.target.files && e.target.files[0]; if (fl2) this.run({ file: fl2 }); e.target.value = ''; },
+      onDragOver: e => { e.preventDefault(); if (!s.dragging) this.setState({ dragging: true }); },
+      onDragLeave: () => this.setState({ dragging: false }),
+      onDrop: e => { e.preventDefault(); this.setState({ dragging: false }); const fl2 = e.dataTransfer.files && e.dataTransfer.files[0]; if (fl2) this.run({ file: fl2 }); },
+      dropBorder: s.dragging ? 'var(--color-accent)' : 'var(--color-neutral-700)', dropBg: s.dragging ? 'color-mix(in srgb, var(--color-accent-900) 70%, transparent)' : 'transparent',
+      isPdf, notPdf: !isPdf, pdfRef: this.pdfRef, rawLabel: f ? f.name : '', pageLabel: `page ${s.pdfPage} / ${s.pdfPages}`,
+      prevPage: () => this.setState({ pdfPage: Math.max(1, s.pdfPage - 1) }), nextPage: () => this.setState({ pdfPage: Math.min(s.pdfPages, s.pdfPage + 1) }),
+      paper, beam, md, mdMore: s.mdShown > 1500, mdMoreLabel: `… ${s.lines.length - 1500} more blocks`, headingStats: `# ${hs[0]} · ## ${hs[1]} · ### ${hs[2]}`, extractNote: s.note,
+      filter: s.filter, onFilter: e => this.setState({ filter: e.target.value }), chunkView, chunkEmpty: !!fl && !chunkView.length,
+      modelLabel, modelPctW: Math.round(modelPct * 100) + '%', modelPctLabel: Math.round(modelPct * 100) + '%',
+      embeddedLabel: `${s.embedded} / ${s.nChunks} chunks`, embedPctW: Math.round(s.embedded / N * 100) + '%',
+      selId: sel ? sel.id : '—', toks: s.toks, tokNote: s.tokNote, cells, dimLabel: v ? `ℝ${v.length}` : 'ℝ—', normLabel: v ? `‖v‖ = ${norm.toFixed(3)}` : '',
+      firstVals: v ? '[ ' + Array.from(v.slice(0, 8)).map(x => x.toFixed(4)).join(', ') + ', … ]' : 'waiting for the first batch…',
+      canvasRef: this.canvasRef, pcaNote, legend, nb, recordLines: rec.map(l => ({ segs: this.colorize(l) })),
+      onCvDown: e => { this.drag = { x: e.clientX, y: e.clientY, yaw: this.yaw, pitch: this.pitch, moved: 0 }; e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId); },
+      onCvMove: e => {
+        if (this.drag) { const dx = e.clientX - this.drag.x, dy = e.clientY - this.drag.y; this.drag.moved = Math.max(this.drag.moved, Math.abs(dx) + Math.abs(dy)); this.yaw = this.drag.yaw + dx * 0.008; this.pitch = Math.max(-1.2, Math.min(1.2, this.drag.pitch + dy * 0.006)); return; }
+        if (!this.scr) return; const r = e.currentTarget.getBoundingClientRect(); const x = e.clientX - r.left, y = e.clientY - r.top;
+        let best = -1, bd = 100; this.scr.forEach(p => { const d = (p.x - x) ** 2 + (p.y - y) ** 2; if (d < bd) { bd = d; best = p.i; } }); this.hover = best;
+      },
+      onCvUp: () => { const d = this.drag; this.drag = null; if (d && d.moved < 4 && this.hover >= 0) this.select(this.hover); },
+      onCvLeave: () => { this.hover = -1; },
+      ixStats, topTerms, termSel: tsel, termIdf, postLines, termQuery: s.termQuery, termMsg: s.termMsg,
+      onTermQuery: e => this.setState({ termQuery: e.target.value }),
+      onTermSubmit: e => { e.preventDefault(); if (!ix) return; const t = s.termQuery.trim().toLowerCase().replace(/^[^\w]+|[^\w]+$/g, ''); if (ix.postings.get(t)) this.setState({ termSel: t, termMsg: '' }); else this.setState({ termMsg: `"${t}" is not in the BM25 index.` }); },
+      query: s.query, onQuery: e => this.setState({ query: e.target.value }), onSearch: e => { e.preventDefault(); this.investigate(s.query); },
+      searchLabel: s.searching ? 'Investigating…' : 'Investigate',
+      suggestions: (this.suggest || []).map(q => ({ text: q, onClick: () => this.investigate(q) })),
+      hasResults: false, results,
+    };
+  }
+  drawMatrix() {
+    const cv = this.matRef.current; if (!cv || !this.vecs || !this.vecs.length) return;
+    const n = this.vecs.length, d = this.vecs[0].length, w = cv.clientWidth || 300;
+    const rowH = Math.max(2, Math.min(22, Math.floor(220 / n))); const h = rowH * n; this.matRowH = rowH;
+    const dpr = window.devicePixelRatio || 1; cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.style.height = h + 'px';
+    const g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h);
+    const C = this.cols(); const cw = w / d; const sel = this.state.selected;
+    for (let i = 0; i < n; i++) { const v = this.vecs[i]; for (let j = 0; j < d; j++) { const x = v[j]; g.globalAlpha = Math.min(1, Math.abs(x) * 8) * (i === sel ? 1 : 0.8); g.fillStyle = x >= 0 ? C.a300 : C.n500; g.fillRect(j * cw, i * rowH, cw + 0.4, rowH > 3 ? rowH - 1 : rowH); } }
+    g.globalAlpha = 1; if (sel < n) { g.strokeStyle = C.acc; g.lineWidth = 1.5; g.strokeRect(0.75, sel * rowH - 0.5, w - 1.5, rowH + 0.5); }
+  }
+
+  invCounts() {
+    const inv = this.state.inv || {}; const K = inv.K || 5;
+    const cites = inv.answer ? (inv.answer.match(/chunk_\d+/gi) || []).length : 0;
+    return [inv.rw ? inv.rw.mode : '—', inv.dense ? Math.min(K, inv.dense.length) + ' + ' + Math.min(K, inv.sparse.length) + ' hits' : '—', inv.fused ? 'top ' + Math.min(K, inv.fused.length) : '—', inv.answer ? cites + ' citations' : '—'];
+  }
+
+  async investigate(q) {
+    q = (q || '').trim(); if (!q || !this.ix || !this.vecs) return;
+    const E = await this.E;
+    const qid = (this.qid || 0) + 1; this.qid = qid;
+    const gone = () => this.dead || this.qid !== qid || this.stale();
+    const K = Math.max(1, Math.min(10, Math.round(this.props.topK ?? 5)));
+    const wD = Math.max(0, Math.min(1, this.props.denseWeight ?? 0.7)), wS = Math.round((1 - wD) * 100) / 100;
+    const keys = ['rewrite', 'recall', 'fuse', 'synth'];
+    this.setState(s => { const st = { ...s.st }, ms = { ...s.ms }, metric = { ...s.metric }; keys.forEach(k => { delete st[k]; delete ms[k]; delete metric[k]; }); return { st, ms, metric, query: q, searching: true, inv: { q, K, wD, wS }, invShown: 0 }; });
+    const patch = o => this.setState(s => ({ inv: { ...(s.inv || {}), ...o } }));
+    const idToIdx = new Map(this.chunks.map((c, i) => [c.id.toLowerCase(), i]));
+    let cur = 'rewrite';
+    try {
+      for await (const ev of E.investigate({ user_query: q, top_k: K, alpha: wS, k: 60, candidate_k: Math.max(20, K) })) {
+        if (gone()) return;
+        if (ev.event === 'error') {
+          cur = ev.stage || cur;
+          throw new Error(ev.message || 'investigation failed on backend');
+        }
+        if (ev.event === 'stage' && ev.status === 'running') {
+          cur = ev.stage;
+          this.mark(cur, 'running');
+          this.follow(cur);
+          continue;
+        }
+        if (ev.event === 'skip') {
+          const answer = ev.answer || '';
+          this.mark('synth', 'done');
+          patch({ answer, synthMode: ev.reason || 'direct', synthMs: 0 });
+          this.setState({ invShown: answer.length, searching: false });
+          this.log('investigation skipped retrieval · ' + (ev.reason || 'direct'));
+          return;
+        }
+        if (ev.event === 'stage' && ev.status === 'done') {
+          const k = ev.stage; const d = ev.data || {}; const ms = ev.ms ?? 0;
+          this.msSet(k, ms);
+          if (k === 'rewrite') {
+            const rw = { dense: d.dense || q, sparse: d.sparse || q, terms: d.terms || [], mode: d.mode || 'gemini', ms };
+            patch({ rw });
+            this.log('rewrite · dense "' + rw.dense.slice(0, 48) + '" · sparse [' + rw.terms.join(', ') + ']');
+            await this.wait(600);
+            this.metric('rewrite', rw.mode + ' · ' + rw.terms.length + ' keywords');
+          } else if (k === 'recall') {
+            const dense = (d.dense || []).map(r => [idToIdx.get(String(r.chunk_id).toLowerCase()), r.score]).filter(x => x[0] != null);
+            const sparse = (d.sparse || []).filter(r => r.score > 0).map(r => [idToIdx.get(String(r.chunk_id).toLowerCase()), r.score]).filter(x => x[0] != null);
+            const tD = d.dense_ms ?? ms / 2, tS = d.sparse_ms ?? ms / 2;
+            patch({ dense, sparse, tD, tS });
+            if (dense.length) this.log('dense top ' + this.chunks[dense[0][0]].id + ' (' + dense[0][1].toFixed(3) + ') · sparse ' + sparse.length + ' hits');
+            await this.wait(700);
+            this.metric('recall', Math.min(K, dense.length) + ' dense · ' + Math.min(K, sparse.length) + ' sparse');
+          } else if (k === 'fuse') {
+            const fused = (d.fused || []).map(r => ({
+              i: idToIdx.get(String(r.chunk_id).toLowerCase()),
+              score: r.score, cd: r.cd, cs: r.cs, dR: r.dR, sR: r.sR,
+            })).filter(x => x.i != null);
+            patch({ fused });
+            this.log('RRF · ' + wD + '/' + wS + ' · ' + fused.length + ' candidates → top ' + Math.min(K, fused.length));
+            await this.wait(600);
+            this.metric('fuse', Math.min(K, fused.length) + ' docs → context');
+          } else if (k === 'synth') {
+            const answer = d.answer || '';
+            const mode = d.mode || 'gemini';
+            patch({ answer, synthMode: mode, synthMs: ms });
+            const n = answer.length;
+            if (this.pace()) for (let c = 0; c < n; c += 3) { if (gone()) return; this.setState({ invShown: c }); await new Promise(r => setTimeout(r, 16)); }
+            this.setState({ invShown: n });
+            this.metric('synth', (answer.match(/chunk_\d+/gi) || []).length + ' citations · ' + mode);
+            this.log('answer · ' + n + ' chars · ' + mode);
+          }
+          this.mark(k, 'done');
+        }
+      }
+      this.setState({ searching: false });
+    } catch (e) {
+      if (gone()) return;
+      this.mark(cur, 'error'); this.setState({ searching: false }); this.log('error · ' + ((e && e.message) || e));
+    }
+  }
+  invVals(S) {
+    const s = this.state; const inv = s.inv || {}; const chunks = this.chunks || []; const rw = inv.rw; const K = inv.K || 5;
+    const pct = x => Math.round(x * 100) + '%';
+    const crumbs = c => Object.values(c.meta).join(' › ') || '(no header)';
+    const shortId = id => String(id).replace(/^chunk_/i, '#');
+    const row = (i, sc, r, mx, fmt, both) => { const c = chunks[i]; return { rank: String(r + 1), id: c.id, short: shortId(c.id), sec: Object.values(c.meta).slice(-1)[0] || c.text.slice(0, 40), title: c.text.slice(0, 240), idColor: both ? 'var(--color-accent-100)' : 'var(--color-accent-200)', op: 1, score: fmt(sc), bar: Math.max(4, sc / (mx || 1) * 100) + '%', crumbs: crumbs(c), preview: c.text.slice(0, 150), both: !!both,
+      bg: i === s.selected ? 'color-mix(in srgb, var(--color-accent-900) 85%, var(--color-surface))' : 'color-mix(in srgb, var(--color-bg) 55%, transparent)', ring: i === s.selected ? 'var(--color-accent)' : 'var(--color-neutral-800)', onClick: () => this.select(i) }; };
+    const dTop = inv.dense && chunks.length ? inv.dense.slice(0, K) : [], sTop = inv.sparse && chunks.length ? inv.sparse.slice(0, K) : [];
+    const dSet = new Set(dTop.map(x => x[0])), sSet = new Set(sTop.map(x => x[0]));
+    const dRet = { sub: inv.dense ? 'cosine · ' + (this.embedModelName || 'BGE') + ' · ' + inv.tD.toFixed(1) + ' ms' : 'cosine over ChromaDB', weight: 'weight ' + pct(inv.wD ?? 0.7), items: dTop.map(([i, sc], r) => row(i, sc, r, dTop[0][1], v => v.toFixed(3), sSet.has(i))), empty: !!inv.dense && !dTop.length, pending: !!s.inv && !inv.dense && s.st.recall !== 'error', pendingLabel: rw ? 'Searching Chroma vector store…' : 'Waiting for the rewrite…', dot: React.createElement('span', { style: { width: 7, height: 7, borderRadius: 4, background: 'var(--color-accent)', boxShadow: '0 0 10px var(--color-accent)', animation: 'rdPulse 1s ease-in-out infinite' } }) };
+    const sRet = { sub: inv.sparse ? `BM25 · k₁ ${this.ix ? this.ix.k1 : 1.2} · b ${this.ix ? this.ix.b : 0.75} · ` + inv.tS.toFixed(1) + ' ms' : 'BM25 over the inverted index', weight: 'weight ' + pct(inv.wS ?? 0.3), items: sTop.map(([i, sc], r) => row(i, sc, r, sTop[0][1], v => v.toFixed(2), dSet.has(i))), empty: !!inv.sparse && !sTop.length, pending: !!s.inv && !inv.sparse && s.st.recall !== 'error', pendingLabel: rw ? 'Searching the inverted index…' : 'Waiting for the rewrite…', dot: React.createElement('span', { style: { width: 7, height: 7, borderRadius: 4, background: 'var(--color-accent)', boxShadow: '0 0 10px var(--color-accent)', animation: 'rdPulse 1s ease-in-out infinite' } }) };
+    const ghosts = Array.from({ length: K }).map((_, r) => ({ rank: String(r + 1), short: '····', sec: ' ', title: '', bar: '0%', op: 0.35, both: false, idColor: 'var(--color-neutral-600)', bg: 'transparent', ring: 'var(--color-neutral-800)', onClick: () => {} }));
+    dRet.items.forEach(t => { if (t.both && t.ring !== 'var(--color-accent)') { t.ring = 'var(--color-accent-600)'; } }); sRet.items.forEach(t => { if (t.both && t.ring !== 'var(--color-accent)') { t.ring = 'var(--color-accent-600)'; } });
+    dRet.tiles = inv.dense ? dRet.items : ghosts; sRet.tiles = inv.sparse ? sRet.items : ghosts;
+    const ks = ['rewrite', 'recall', 'fuse']; const run = ks.find(k => s.st[k] === 'running'); const err = ks.find(k => s.st[k] === 'error');
+    const act = run || err || ks.slice().reverse().find(k => s.st[k]) || 'rewrite'; const A = (S && S[act]) || {}; const lab = { rewrite: 'rewrite', recall: 'retrieve', fuse: 'fuse' }[act];
+    const SI = { op: s.ready ? 1 : 0.55, has: !!s.inv, wait: !s.inv, line: S ? S.fuse.line : 'var(--color-neutral-800)', numColor: A.numColor, node: A.node, glow: run ? 1 : 0, meta: A.meta ? lab + ' · ' + A.meta : (run ? lab + ' · running…' : ''), metaRing: A.meta || run ? (run ? 'var(--color-accent-600)' : 'var(--color-accent-800)') : 'transparent' };
+    const sparseChips = rw && this.ix ? rw.terms.map(t => { const p = this.ix.postings.get(t); const d = p ? Object.keys(p).length : 0; return { t, df: d ? 'df ' + d : 'not indexed', color: d ? 'var(--color-accent-100)' : 'var(--color-neutral-500)', bg: d ? 'var(--color-accent-900)' : 'transparent', ring: d ? 'var(--color-accent-700)' : 'var(--color-neutral-800)' }; }) : [];
+    const F = chunks.length && inv.fused ? inv.fused : []; const fmax = F.length ? F[0].score : 1;
+    const fusedRows = F.slice(0, Math.max(K + 3, 8)).map((o, r) => { const c = chunks[o.i]; const on = r < K; return { rank: '#' + (r + 1), id: c.id, score: o.score.toFixed(4), dW: (o.cd / fmax * 100).toFixed(1) + '%', sW: (o.cs / fmax * 100).toFixed(1) + '%',
+      dR: o.dR ? 'dense #' + o.dR : 'dense —', sR: o.sR ? 'sparse #' + o.sR : 'sparse —', crumbs: crumbs(c), op: on ? 1 : 0.5, onClick: () => this.select(o.i),
+      ring: o.i === s.selected ? 'var(--color-accent)' : on ? 'var(--color-accent-800)' : 'var(--color-neutral-800)', bg: on ? 'color-mix(in srgb, var(--color-accent-900) 40%, transparent)' : 'transparent' }; });
+    const fusedTop = F.length ? F.slice(0, K).map((o, r) => { const c = chunks[o.i]; return { rank: String(r + 1), short: shortId(c.id), sec: Object.values(c.meta).slice(-1)[0] || c.text.slice(0, 40), title: (o.dR ? 'dense #' + o.dR : 'dense —') + ' · ' + (o.sR ? 'sparse #' + o.sR : 'sparse —') + ' · ' + o.score.toFixed(4), dW: (o.cd / fmax * 100).toFixed(1) + '%', sW: (o.cs / fmax * 100).toFixed(1) + '%', op: 1, onClick: () => this.select(o.i), ring: o.i === s.selected ? 'var(--color-accent)' : 'var(--color-neutral-800)', bg: 'color-mix(in srgb, var(--color-bg) 55%, transparent)' }; })
+      : Array.from({ length: K }).map((_, r) => ({ rank: String(r + 1), short: '····', sec: ' ', title: '', dW: '0%', sW: '0%', op: 0.35, onClick: () => {}, ring: 'var(--color-neutral-800)', bg: 'transparent' }));
+    const wDv = inv.wD ?? 0.7; const donut = 'conic-gradient(var(--color-accent-400) 0 ' + pct(wDv) + ', var(--color-neutral-600) ' + pct(wDv) + ' 100%)';
+    const fuseGlow = s.st.fuse === 'running' ? '0 0 32px -2px var(--color-accent)' : s.st.fuse === 'done' ? '0 0 20px -8px var(--color-accent)' : 'none';
+    const moreLabel = F.length > K ? '+' + (F.length - K) + ' more candidates below the cut' : '';
+    const ctx = F.slice(0, K).map(o => chunks[o.i]);
+    const ctxItems = ctx.map(c => ({ short: shortId(c.id), sec: Object.values(c.meta).slice(-1)[0] || c.text.slice(0, 40), id: c.id, crumbs: crumbs(c), onClick: () => this.select(chunks.indexOf(c)) }));
+    const ans = inv.answer || '';
+    const cleanAns = ans.replace(/\s*\[(?:chunk_\d+)(?:\s*[,;]\s*chunk_\d+)*\]/gi, '').replace(/\s+([.,;:!?])/g, '$1');
+    const shown = cleanAns.slice(0, s.invShown);
+    const segs = shown ? [{ plain: true, cite: false, t: shown }] : [];
+    const typing = s.st.synth === 'running' && !!ans;
+    const caret = typing ? React.createElement('span', { style: { display: 'inline-block', width: 2, height: '1em', marginLeft: 2, verticalAlign: '-2px', background: 'var(--color-accent)', animation: 'rdBlink 1s steps(1) infinite' } }) : null;
+    const waitDot = React.createElement('span', { style: { width: 8, height: 8, borderRadius: 4, background: 'var(--color-accent)', boxShadow: '0 0 10px var(--color-accent)', animation: 'rdPulse 1s ease-in-out infinite' } });
+    const rawIds = ans.match(/chunk_\d+/gi) || [];
+    const seenIds = new Set(); const ids = [];
+    rawIds.forEach(id => { const low = id.toLowerCase(); if (!seenIds.has(low)) { seenIds.add(low); ids.push(id); } });
+    const sources = ids.map(id => { const i = chunks.findIndex(c => c.id.toLowerCase() === id.toLowerCase()); return { id: i >= 0 ? chunks[i].id : id, crumbs: i >= 0 ? crumbs(chunks[i]) : '', onClick: () => { if (i >= 0) { this.select(i); this.follow('store'); } } }; });
+    const tok = ctx.reduce((a, c) => a + (c.tok || 0), 0);
+    return {
+      invQ: inv.q || '', rwDense: rw ? rw.dense : 'rewriting…', rwMode: rw ? 'rewriter · ' + rw.mode + ' · ' + rw.ms + ' ms' : 'rewriting…', sparseChips, dRet, sRet, SI, synthGlow: s.st.synth === 'running' ? '0 0 36px -2px var(--color-accent)' : s.st.synth === 'done' ? '0 0 24px -8px var(--color-accent)' : '0 0 0 0 transparent', fuseHas: !!(inv.fused && chunks.length), fusedTop, donut, fuseGlow, moreLabel, fusedRows,
+      wD: String(Math.round((inv.wD ?? 0.7) * 100)), wS: String(Math.round((inv.wS ?? 0.3) * 100)), kLabel: 'top ' + K + ' → synthesizer',
+      ctxItems, ctxLabel: ctx.length + ' chunks · ≈' + tok + ' tokens', answerSegs: segs, answerWaiting: s.st.synth === 'running' && !ans, answerWaitLabel: 'Synthesizing from ' + ctx.length + ' chunks…', waitDot, caret,
+      synthMode: inv.synthMode ? inv.synthMode + ' · ' + inv.synthMs + ' ms' : 'synthesizer', sources, hasSources: sources.length > 0 && !typing,
+    };
+  }
+
+  renderVals() {
+    const b = this.baseVals(); const s = this.state; const chunks = this.chunks || []; const f = s.file;
+    const order = ['upload', 'extract', 'chunk', 'embed', 'store', 'index', 'retrieve', 'rewrite', 'recall', 'fuse', 'synth'];
+    const short = ['Intake', 'Extract', 'Chunk', 'Embed', 'Store', 'Index', 'Ask', 'Rewrite', 'Retrieve', 'Fuse', 'Synthesize'];
+    const isDone = k => s.st[k] === 'done' || s.st[k] === 'ready';
+    const counts = [f ? f.sizeLabel : 'awaiting', s.lines.length ? s.lines.length + ' blocks' : '—', s.nChunks ? s.nChunks + ' chunks' : '—', s.embedded ? s.embedded + ' × ' + s.dim : '—', s.legend.length ? s.legend.length + ' clusters' : '—', this.ix && s.termSel ? this.ix.terms.toLocaleString() + ' terms' : '—', s.ready ? 'live' : '—'].concat(this.invCounts());
+    const flowEl = () => React.createElement('div', { style: { position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(90deg, transparent, var(--color-accent-100), transparent)', backgroundSize: '40px 100%', backgroundRepeat: 'repeat-x', animation: 'rdFlow .7s linear infinite' } });
+    const nodes = order.map((k, i) => {
+      const st = s.st[k], on = st === 'running', done = isDone(k), err = st === 'error';
+      const nxt = order[i + 1];
+      return { name: short[i], count: err ? 'failed' : counts[i], onClick: () => this.follow(k), link: i < order.length - 1,
+        icon: done ? '✓' : String(i + 1).padStart(2, '0'),
+        ring: on ? '0 0 0 1px var(--color-accent), 0 0 22px -4px var(--color-accent)' : done ? '0 0 0 1px var(--color-accent-700)' : '0 0 0 1px var(--color-neutral-800)',
+        bg: on ? 'color-mix(in srgb, var(--color-accent-800) 75%, var(--color-bg))' : done ? 'color-mix(in srgb, var(--color-accent-900) 70%, var(--color-bg))' : 'color-mix(in srgb, var(--color-bg) 50%, transparent)',
+        numColor: on || done ? 'var(--color-accent-200)' : 'var(--color-neutral-600)', numRing: on ? 'var(--color-accent)' : done ? 'var(--color-accent-600)' : 'var(--color-neutral-700)',
+        nameColor: on || done ? 'var(--color-text)' : 'var(--color-neutral-500)', countColor: on || done ? 'var(--color-accent-300)' : 'var(--color-neutral-600)',
+        linkBg: done ? 'var(--color-accent-600)' : 'var(--color-neutral-800)', flow: (done && nxt && s.st[nxt] === 'running') ? flowEl() : null };
+    });
+    const S = b.S;
+    order.forEach((k, i) => {
+      const st = s.st[k], on = st === 'running', done = isDone(k);
+      if (!S[k]) return;
+      S[k].line = done ? 'linear-gradient(180deg, #a78bfa, #7c3aed)' : 'var(--color-neutral-800)';
+      S[k].numColor = on || done ? 'var(--color-accent-200)' : 'var(--color-neutral-600)';
+      S[k].node = on ? '0 0 0 1px #a78bfa, 0 0 0 4px rgba(139,92,246,.18), 0 0 28px -2px #8b5cf6' : done ? '0 0 0 1px #8b5cf6, 0 0 16px -6px #8b5cf6' : '0 0 0 1px var(--color-neutral-700)';
+      S[k].glow = on ? 1 : 0;
+      S[k].metaRing = S[k].meta ? (on ? 'var(--color-accent-600)' : 'var(--color-accent-800)') : 'transparent';
+    });
+    const heads = s.lines.filter(l => l.kind[0] === 'h').slice(0, 60);
+    const toc = heads.map(l => { const lv = +l.kind[1]; return { text: l.text, mark: '#'.repeat(lv), pad: (8 + (lv - 1) * 16) + 'px', fs: lv === 1 ? '15px' : lv === 2 ? '13.5px' : '12.5px', color: lv === 1 ? 'var(--color-text)' : lv === 2 ? 'var(--color-neutral-200)' : 'var(--color-neutral-400)', rule: lv === 1 ? 'var(--color-accent-500)' : lv === 2 ? 'var(--color-accent-700)' : 'var(--color-neutral-800)' }; });
+    const TONES = ['var(--color-accent-300)', 'var(--color-accent-500)', 'var(--color-accent-700)', 'var(--color-neutral-400)', 'var(--color-accent-400)', 'var(--color-neutral-600)'];
+    const groupKeys = []; const toneOf = c => { const key = c.meta.h2 || c.meta.h1 || ''; let gi = groupKeys.indexOf(key); if (gi < 0) { groupKeys.push(key); gi = groupKeys.length - 1; } return TONES[gi % TONES.length]; };
+    const tones = chunks.map(toneOf);
+    const ribbon = chunks.slice(0, s.chunksShown).map((c, i) => ({ flex: Math.max(1, c.chars), bg: tones[i], title: c.id + ' · ' + (Object.values(c.meta).slice(-1)[0] || '') + ' · ' + c.chars + ' ch', onClick: () => this.select(i),
+      ring: i === s.selected ? '0 0 0 2px var(--color-bg), 0 0 0 3px var(--color-accent-100)' : 'none', lift: i === s.selected ? 'translateY(-4px)' : 'none' }));
+    const ids = new Map(chunks.map((c, i) => [c.id, i]));
+    b.chunkView.forEach(cv => { cv.tone = tones[ids.get(cv.id)]; });
+    const v = this.vecs && this.vecs[s.selected];
+    const wave = v ? Array.from(v).map((x, j) => { const hh = Math.min(48, Math.abs(x) * 320); return { x: j + 0.19, y: x >= 0 ? 50 - hh : 50, h: Math.max(0.6, hh), c: x >= 0 ? 'var(--color-accent-300)' : 'var(--color-neutral-500)' }; }) : [];
+    const sel = chunks[s.selected];
+    const toks = s.toks.map(t => ({ ...t, bg: /^\[|^##/.test(t.t) ? 'var(--color-accent-800)' : 'var(--color-accent-900)' }));
+    const nbMax = s.nb.length ? s.nb[0][1] : 1;
+    b.nb.forEach((n, i) => { n.bar = Math.max(6, (s.nb[i][1] / (nbMax || 1)) * 64) + 'px'; });
+    const tops = this.topTerms || []; const dmax = tops.length ? tops[0][1] : 1, dmin = tops.length ? tops[tops.length - 1][1] : 1;
+    const cloud = tops.map(([w, d], i) => { const r = dmax === dmin ? 0.5 : (d - dmin) / (dmax - dmin); const on = w === s.termSel;
+      return { term: w, title: 'df ' + d, fs: (13 + r * 21).toFixed(1) + 'px', color: on ? 'var(--color-accent-200)' : r > 0.6 ? 'var(--color-text)' : r > 0.25 ? 'var(--color-neutral-300)' : 'var(--color-neutral-500)', glow: on ? '0 0 18px var(--color-accent)' : 'none', onClick: () => this.setState({ termSel: w, termMsg: '' }) }; })
+      .sort((a, z) => (a.term.length * 7 + a.term.charCodeAt(0)) % 11 - (z.term.length * 7 + z.term.charCodeAt(0)) % 11);
+    const shaBars = f && f.sha ? f.sha.split('').map(ch => { const n = parseInt(ch, 16); return { w: (1 + (n % 4)) + 'px', o: (0.25 + (n / 15) * 0.75).toFixed(2) }; }) : [];
+    const caseFacts = f ? [{ k: 'size', v: f.sizeLabel }, { k: 'format', v: f.kind.toUpperCase() }].concat(s.pdfPages ? [{ k: 'pages', v: s.pdfPages }] : []).concat(s.nChunks ? [{ k: 'chunks', v: s.nChunks }] : []).concat(s.ready ? [{ k: 'processed in', v: ((this.doneAt || performance.now()) - this.t0 > 0 ? (((this.doneAt || performance.now()) - this.t0) / 1000).toFixed(1) + 's' : '—') }] : []) : [];
+    if (s.ready && !this.doneAt) this.doneAt = performance.now();
+    if (!s.ready) this.doneAt = null;
+    const ex = s.explained || [];
+    const anyRun = order.some(k => s.st[k] === 'running');
+    const logDot = React.createElement('span', { style: { width: 7, height: 7, borderRadius: 4, background: anyRun ? 'var(--color-accent)' : s.ready ? 'var(--color-accent-600)' : 'var(--color-neutral-700)', boxShadow: anyRun ? '0 0 8px var(--color-accent)' : 'none', animation: anyRun ? 'rdPulse 1s ease-in-out infinite' : 'none' } });
+    const heroScan = React.createElement('div', { style: { position: 'absolute', left: 46, right: 46, height: 1, top: '8%', background: 'linear-gradient(90deg, transparent, var(--color-accent-300), transparent)', boxShadow: '0 0 18px 2px color-mix(in srgb, var(--color-accent) 50%, transparent)', animation: 'rdSweep 3.2s ease-in-out infinite', pointerEvents: 'none' } });
+    return Object.assign(b, {
+      nodes, S, toc, tocEmpty: s.lines.length > 0 && !heads.length, mdCount: s.mdShown + ' / ' + s.lines.length + ' blocks',
+      ribbon, wave, dimMax: v ? v.length - 1 : 383, selCrumbs: sel ? (Object.values(sel.meta).join(' › ') || '(no header)') : '', toks,
+      matRef: this.matRef, matLabel: this.vecs ? this.vecs.length + ' × ' + this.vecs[0].length : '',
+      onMatClick: e => { if (!this.matRowH) return; const r = e.currentTarget.getBoundingClientRect(); this.select(Math.floor((e.clientY - r.top) / this.matRowH)); },
+      collection: s.collection || (f ? f.docId : '—'), pcaVar: ex.length ? 'PC1 ' + (ex[0] * 100).toFixed(1) + '% · PC2 ' + (ex[1] * 100).toFixed(1) + '% · PC3 ' + (ex[2] * 100).toFixed(1) + '%' : 'PCA 384 → 3',
+      pcaNote: ex.length ? 'cosine space · ' + this.pts.length + ' points · k-means on full vectors' : '',
+      cloud, shaBars, caseFacts, caseTitle: f ? f.name.replace(/([_.-])/g, '$1\u200b') : '', dropTitle: s.dragging ? 'Release to open the case' : 'Drop a document here', heroScan,
+      logOpen: s.logOpen, onToggleLog: () => this.setState({ logOpen: !s.logOpen }), logDot, logCount: s.log.length ? s.log.length + ' events' : '', logChevron: s.logOpen ? '–' : '+',
+    }, this.invVals(S));
+  }
+}
+</script>
+</body>
+</html>

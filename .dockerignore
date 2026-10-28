@@ -1,0 +1,12 @@
+.env
+.env.*
+.chroma_db/
+*.sqlite3
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.git/
+.vscode/
+.idea/

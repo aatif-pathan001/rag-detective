@@ -1,0 +1,17 @@
+# Document DataLoader & Chunking Module Dependencies
+pypdf>=5.0.0
+python-docx>=1.1.0
+pydantic>=2.0.0
+numpy>=1.26.0
+langchain-text-splitters>=0.2.0
+langchain-core>=0.2.0
+langchain-pdfmuse
+langchain-chroma
+# Lightweight ONNX Runtime embedder for BAAI/bge-small-en-v1.5 (replaces heavy PyTorch / langchain-huggingface)
+fastembed>=0.3.0
+google-genai
+
+# Web API Backend Dependencies
+fastapi>=0.110.0
+uvicorn>=0.28.0
+python-multipart>=0.0.9
